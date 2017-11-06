@@ -7,6 +7,9 @@ set tabstop=4
 set shiftwidth=4
 set expandtab
 
+set encoding=utf8
+set guifont=Ubuntu\ Mono\ Nerd\ Font\ Complete
+
 " Scripts
 " Tell Vim which characters to show for expanded TABs,
 " trailing whitespace, and end-of-lines. VERY useful!
@@ -21,7 +24,8 @@ match ExtraWhitespace /\s\+$\|\t/
 
 " Terminal
 set termguicolors
-colorscheme Tomorrow-Night-Blue
+"colorscheme Tomorrow-Night-Blue
+colorscheme base16-apathy
 
 " Macros
 map <leader>q :bp<bar>sp<bar>bn<bar>bd<CR>.
@@ -49,6 +53,7 @@ Plug 'w0rp/ale'
 " NERDTree
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 
 " Line Numbers
 Plug 'myusuf3/numbers.vim'
@@ -59,6 +64,24 @@ Plug 'vim-airline/vim-airline-themes'
 
 " Ctrl P
 Plug 'ctrlpvim/ctrlp.vim'
+
+" Git Fugitive
+Plug 'tpope/vim-fugitive'
+
+" GitGutter
+Plug 'airblade/vim-gitgutter'
+
+" PHPactor
+Plug 'phpactor/phpactor' ,  {'do': 'composer install'}
+Plug 'roxma/ncm-phpactor'
+
+" PHP Language Server
+"Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' }
+"Plug 'roxma/LanguageServer-php-neovim',  {'do': 'composer install && composer run-script parse-stubs'}
+
+" DevIcons
+Plug 'ryanoasis/vim-devicons'
+
 
 call plug#end()
 
@@ -77,3 +100,10 @@ nnoremap <Leader>f :CtrlPMRUFiles<CR>
 
 " Airline settings
 let g:airline_theme='papercolor'
+let g:airline_powerline_fonts = 1
+
+" PHP Language Server settings
+"autocmd FileType php LanguageClientStart
+
+
+
