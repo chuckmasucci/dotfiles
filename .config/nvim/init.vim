@@ -4,7 +4,8 @@ set smartcase
 set shiftwidth=4
 set expandtab
 set encoding=utf8
-set guifont=Ubuntu\ Mono\ Nerd\ Font\ Complete
+"set guifont=Fira\ Mono\ for\ Powerline:h16
+set guifont=Source\ Code\ Pro\ for\ Powerline:h16
 set tags=tags
 set tabstop=4
 set termguicolors
