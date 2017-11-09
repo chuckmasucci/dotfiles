@@ -1,14 +1,16 @@
 " Config
 set ignorecase
 set smartcase
-
-filetype plugin indent on
-set tabstop=4
 set shiftwidth=4
 set expandtab
-
 set encoding=utf8
 set guifont=Ubuntu\ Mono\ Nerd\ Font\ Complete
+set tags=tags
+set tabstop=4
+set termguicolors
+filetype plugin indent on
+filetype plugin on
+colorscheme base16-material-darker
 
 " Scripts
 " Tell Vim which characters to show for expanded TABs,
@@ -21,11 +23,6 @@ set list                " Show problematic characters.
 " Also highlight all tabs and trailing whitespace characters.
 highlight ExtraWhitespace ctermbg=darkgreen guibg=darkgreen
 match ExtraWhitespace /\s\+$\|\t/
-
-" Terminal
-set termguicolors
-"colorscheme Tomorrow-Night-Blue
-colorscheme base16-apathy
 
 " Macros
 map <leader>q :bp<bar>sp<bar>bn<bar>bd<CR>.
@@ -40,6 +37,9 @@ Plug 'chriskempson/base16-vim'
 
 " CLang syntax hightlighting
 Plug 'arakashic/chromatica.nvim'
+let g:chromatica#libclang_path='/usr/lib/llvm-4.0/lib/libclang.so'
+let g:chromatica#highlight_feature_level=1
+let g:chromatica#responsive_mode=1
 
 " Completion manager
 Plug 'roxma/nvim-completion-manager'
@@ -61,9 +61,14 @@ Plug 'myusuf3/numbers.vim'
 " VIM Airline
 Plug 'bling/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+let g:airline_theme='papercolor'
+let g:airline_powerline_fonts = 1
 
 " Ctrl P
 Plug 'ctrlpvim/ctrlp.vim'
+nnoremap <Leader>o :CtrlP<CR>
+nnoremap <Leader>b :CtrlPBuffer<CR>
+nnoremap <Leader>f :CtrlPMRUFiles<CR>
 
 " Git Fugitive
 Plug 'tpope/vim-fugitive'
@@ -75,9 +80,39 @@ Plug 'airblade/vim-gitgutter'
 Plug 'phpactor/phpactor' ,  {'do': 'composer install'}
 Plug 'roxma/ncm-phpactor'
 
-" PHP Language Server
-"Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' }
-"Plug 'roxma/LanguageServer-php-neovim',  {'do': 'composer install && composer run-script parse-stubs'}
+" PHP namespace
+Plug 'arnaud-lb/vim-php-namespace'
+function! IPhpInsertUse()
+    call PhpInsertUse()
+    call feedkeys('a',  'n')
+endfunction
+autocmd FileType php inoremap <Leader>u <Esc>:call IPhpInsertUse()<CR>
+autocmd FileType php noremap <Leader>u :call PhpInsertUse()<CR>
+
+function! IPhpExpandClass()
+    call PhpExpandClass()
+    call feedkeys('a', 'n')
+endfunction
+autocmd FileType php inoremap <Leader>e <Esc>:call IPhpExpandClass()<CR>
+autocmd FileType php noremap <Leader>e :call PhpExpandClass()<CR>
+
+" Autotag vim
+Plug 'craigemery/vim-autotag'
+let g:autotagTagsFile="tags"
+
+
+" taglist.vim
+Plug 'vim-scripts/taglist.vim'
+
+" NERD Commenter
+Plug 'scrooloose/nerdcommenter'
+
+" Tagbar
+Plug 'majutsushi/tagbar'
+Plug 'vim-php/tagbar-phpctags.vim'
+let g:tagbar_phpctags_bin='/usr/local/bin/phpctags'
+let g:tagbar_left=1
+noremap <M-7> :TagbarToggle<CR>
 
 " DevIcons
 Plug 'ryanoasis/vim-devicons'
@@ -85,25 +120,6 @@ Plug 'ryanoasis/vim-devicons'
 
 call plug#end()
 
-" Chromatica settings
-let g:chromatica#libclang_path='/usr/lib/llvm-4.0/lib/libclang.so'
-let g:chromatica#highlight_feature_level=1
-let g:chromatica#responsive_mode=1
-
-" Ctrl P settings
-" Open file menu
-nnoremap <Leader>o :CtrlP<CR>
-" Open buffer menu
-nnoremap <Leader>b :CtrlPBuffer<CR>
-" Open most recently used files
-nnoremap <Leader>f :CtrlPMRUFiles<CR>
-
-" Airline settings
-let g:airline_theme='papercolor'
-let g:airline_powerline_fonts = 1
-
-" PHP Language Server settings
-"autocmd FileType php LanguageClientStart
-
-
-
+" My settings
+nnoremap <F3> :NumbersToggle<CR>
+nnoremap \\ :noh<return>
