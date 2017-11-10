@@ -4,13 +4,15 @@ set smartcase
 set shiftwidth=4
 set expandtab
 set encoding=utf8
-set guifont=Ubuntu\ Mono\ Nerd\ Font\ Complete
+set guifont=SauceCodePro\ Nerd\ Font\ Complete\ Mono:h9
 set tags=tags
 set tabstop=4
 set termguicolors
 filetype plugin indent on
 filetype plugin on
 colorscheme base16-material-darker
+
+let g:linespace = 31
 
 " Scripts
 " Tell Vim which characters to show for expanded TABs,
@@ -123,3 +125,4 @@ call plug#end()
 " My settings
 nnoremap <F3> :NumbersToggle<CR>
 nnoremap \\ :noh<return>
+nnoremap <tab> :bNext<CR>
