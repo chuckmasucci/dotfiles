@@ -4,7 +4,7 @@ set smartcase
 set shiftwidth=4
 set expandtab
 set encoding=utf8
-set guifont=SauceCodePro\ Nerd\ Font\ Complete\ Mono:h9
+set guifont=Source\ Code\ Pro\ for\ Powerline:h16
 set tags=tags
 set tabstop=4
 set termguicolors
@@ -102,7 +102,6 @@ autocmd FileType php noremap <Leader>e :call PhpExpandClass()<CR>
 Plug 'craigemery/vim-autotag'
 let g:autotagTagsFile="tags"
 
-
 " taglist.vim
 Plug 'vim-scripts/taglist.vim'
 
@@ -116,9 +115,23 @@ let g:tagbar_phpctags_bin='/usr/local/bin/phpctags'
 let g:tagbar_left=1
 noremap <M-7> :TagbarToggle<CR>
 
+" Buf tab line
+Plug 'ap/vim-buftabline'
+let g:buftabline_indicators='on'
+let g:buftabline_separators='on'
+nmap <leader>1 <Plug>BufTabLine.Go(1)
+nmap <leader>2 <Plug>BufTabLine.Go(2)
+nmap <leader>3 <Plug>BufTabLine.Go(3)
+nmap <leader>4 <Plug>BufTabLine.Go(4)
+nmap <leader>5 <Plug>BufTabLine.Go(5)
+nmap <leader>6 <Plug>BufTabLine.Go(6)
+nmap <leader>7 <Plug>BufTabLine.Go(7)
+nmap <leader>8 <Plug>BufTabLine.Go(8)
+nmap <leader>9 <Plug>BufTabLine.Go(9)
+nmap <leader>0 <Plug>BufTabLine.Go(10)
+
 " DevIcons
 Plug 'ryanoasis/vim-devicons'
-
 
 call plug#end()
 
