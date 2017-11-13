@@ -4,7 +4,7 @@ set smartcase
 set shiftwidth=4
 set expandtab
 set encoding=utf8
-set guifont=Source\ Code\ Pro\ for\ Powerline:h9
+set guifont=SauceCodePro\ Nerd\ Font\ Mono:h9
 set tags=tags
 set tabstop=4
 set termguicolors
@@ -26,11 +26,6 @@ set list                " Show problematic characters.
 highlight ExtraWhitespace ctermbg=darkgreen guibg=darkgreen
 match ExtraWhitespace /\s\+$\|\t/
 
-" Macros
-map <leader>q :bp<bar>sp<bar>bn<bar>bd<CR>.
-inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-
 " vim-plug
 call plug#begin('~/.config/nvim/plugged')
 
@@ -42,15 +37,46 @@ Plug 'arakashic/chromatica.nvim'
 let g:chromatica#libclang_path='/usr/lib/llvm-4.0/lib/libclang.so'
 let g:chromatica#highlight_feature_level=1
 let g:chromatica#responsive_mode=1
+let g:chromatica#enable_at_startup=1
 
 " Completion manager
 Plug 'roxma/nvim-completion-manager'
+set shortmess+=c
+map <leader>q :bp<bar>sp<bar>bn<bar>bd<CR>.
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
 " Clang completion
 Plug 'roxma/ncm-clang'
+let g:clang_make_default_keymappings = 0
+let g:clang_auto_user_options = ''
+
+" Clang complete
+Plug 'Rip-Rip/clang_complete'
+let g:clang_use_library = 1
+let g:clang_library_path='/usr/lib/llvm-4.0/lib/'
+let g:clang_snippets_engine = 'ultisnips'
+let g:clang_make_default_keymappings = 0
+let g:clang_auto_user_options = ''
+let g:clang_complete_auto = 1
+let g:clang_hl_errors = 1
+let g:clang_periodic_quickfix = 1
+let g:clang_snippets = 1
+let g:clang_complete_optional_args_in_snippets = 1
+let g:clang_trailing_placeholder = 1
+let g:clang_close_preview = 1
+let g:clang_complete_macros = 1
+let g:clang_complete_patterns = 1
+
+" Gen tags
+Plug 'jsfaint/gen_tags.vim'
 
 " Linter
 Plug 'w0rp/ale'
+let g:ale_linters = {
+    \   'cpp': ['clang'],
+    \}
+autocmd BufEnter *.cpp,*.h,*.hpp,*.hxx let g:ale_cpp_clang_options = join(ncm_clang#compilation_info()['args'], ' ')
 
 " NERDTree
 Plug 'scrooloose/nerdtree'
@@ -98,12 +124,23 @@ endfunction
 autocmd FileType php inoremap <Leader>e <Esc>:call IPhpExpandClass()<CR>
 autocmd FileType php noremap <Leader>e :call PhpExpandClass()<CR>
 
+" Ulti snips
+Plug 'SirVer/ultisnips'
+
+" Snippets are separated from the engine. Add this if you want them:
+Plug 'honza/vim-snippets'
+
+" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
+
 " Autotag vim
 Plug 'craigemery/vim-autotag'
-let g:autotagTagsFile="tags"
-
-" taglist.vim
-Plug 'vim-scripts/taglist.vim'
+let g:autotagTagsFile=".tags"
 
 " NERD Commenter
 Plug 'scrooloose/nerdcommenter'
@@ -138,4 +175,4 @@ call plug#end()
 " My settings
 nnoremap <F3> :NumbersToggle<CR>
 nnoremap \\ :noh<return>
-nnoremap <tab> :bNext<CR>
+nnoremap p ]p
