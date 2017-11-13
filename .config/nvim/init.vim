@@ -176,3 +176,4 @@ call plug#end()
 nnoremap <F3> :NumbersToggle<CR>
 nnoremap \\ :noh<return>
 nnoremap p ]p
+nnoremap \w :w<CR>
