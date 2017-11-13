@@ -173,6 +173,7 @@ Plug 'ryanoasis/vim-devicons'
 call plug#end()
 
 " My settings
+set mouse=a
 nnoremap <F3> :NumbersToggle<CR>
 nnoremap \\ :noh<return>
 nnoremap p ]p
