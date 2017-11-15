@@ -156,6 +156,7 @@ noremap <M-7> :TagbarToggle<CR>
 Plug 'ap/vim-buftabline'
 let g:buftabline_indicators='on'
 let g:buftabline_separators='on'
+let g:buftabline_numbers=2
 nmap <leader>1 <Plug>BufTabLine.Go(1)
 nmap <leader>2 <Plug>BufTabLine.Go(2)
 nmap <leader>3 <Plug>BufTabLine.Go(3)
