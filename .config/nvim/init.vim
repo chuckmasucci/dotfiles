@@ -8,6 +8,7 @@ set guifont=SauceCodePro\ Nerd\ Font\ Mono:h9
 set tags=tags
 set tabstop=4
 set termguicolors
+set hidden
 filetype plugin indent on
 filetype plugin on
 colorscheme base16-material-darker
