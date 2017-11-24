@@ -1,7 +1,10 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 path+=('/usr/bin/')
+path+=('~/.local/bin/')
 path+=('/usr/lib/llvm-4.0/bin/')
+
+TERM=screen-256color
 
 # Path to your oh-my-zsh installation.
 export ZSH=/home/chuck/.oh-my-zsh
@@ -91,6 +94,16 @@ alias zc='nvim ~/.zshrc'
 alias vim='nvim $1'
 alias sc='source ~/.zshrc'
 alias spacegame='cd ~/Projects/SDL/spacegame/'
+
+rxvt() {
+   sed -i 's/URxvt.lineSpace: 3/URxvt.lineSpace: 0/g' ~/.Xdefaults
+   urxvt
+}
+
+prog() {
+    sed -i 's/URxvt.lineSpace: 0/URxvt.lineSpace: 3/g' ~/.Xdefaults
+    urxvt
+}
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm

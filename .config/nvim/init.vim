@@ -4,16 +4,16 @@ set smartcase
 set shiftwidth=4
 set expandtab
 set encoding=utf8
-set guifont=SauceCodePro\ Nerd\ Font\ Mono:h9
+set guifont=SauceCodePro\ Nerd\ Font\ Mono
 set tags=tags
 set tabstop=4
 set termguicolors
 set hidden
+set nowrap
+set formatoptions-=t
 filetype plugin indent on
 filetype plugin on
-colorscheme base16-material-darker
-
-let g:linespace = 31
+colorscheme base16-circus
 
 " Scripts
 " Tell Vim which characters to show for expanded TABs,
@@ -40,12 +40,16 @@ let g:chromatica#highlight_feature_level=1
 let g:chromatica#responsive_mode=1
 let g:chromatica#enable_at_startup=1
 
+" Vim polygot
+Plug 'sheerun/vim-polyglot'
+Plug 'StanAngeloff/php.vim'
+
 " Completion manager
 Plug 'roxma/nvim-completion-manager'
 set shortmess+=c
 map <leader>q :bp<bar>sp<bar>bn<bar>bd<CR>.
-inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+"inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+"inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
 " Clang completion
 Plug 'roxma/ncm-clang'
@@ -75,14 +79,18 @@ Plug 'jsfaint/gen_tags.vim'
 " Linter
 Plug 'w0rp/ale'
 let g:ale_linters = {
-    \   'cpp': ['clang'],
+    \   'c': ['clang'],
+    \   'php': ['php'],
     \}
-autocmd BufEnter *.cpp,*.h,*.hpp,*.hxx let g:ale_cpp_clang_options = join(ncm_clang#compilation_info()['args'], ' ')
+autocmd BufEnter *.c,*.h let g:ale_c_clang_options = join(ncm_clang#compilation_info()['args'], ' ')
+let g:ale_set_signs = 1
+let g:airline#extensions#ale#enabled = 1
 
 " NERDTree
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+map <F2> :NERDTreeToggle<CR>
 
 " Line Numbers
 Plug 'myusuf3/numbers.vim'
@@ -90,7 +98,9 @@ Plug 'myusuf3/numbers.vim'
 " VIM Airline
 Plug 'bling/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-let g:airline_theme='papercolor'
+"let g:airline_theme='base16-spacemacs'
+"let g:airline_theme='tomorrow'
+"let g:airline_theme='lucius'
 let g:airline_powerline_fonts = 1
 
 " Ctrl P
@@ -140,16 +150,19 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 let g:UltiSnipsEditSplit="vertical"
 
 " Autotag vim
-Plug 'craigemery/vim-autotag'
-let g:autotagTagsFile=".tags"
+"Plug 'craigemery/vim-autotag'
+"let g:autotagTagsFile=".tags"
 
 " NERD Commenter
 Plug 'scrooloose/nerdcommenter'
 
+" Gutentag
+Plug 'ludovicchabant/vim-gutentags'
+let g:gutentags_cache_dir = '~/.vim/gutentags'
+
 " Tagbar
 Plug 'majutsushi/tagbar'
 Plug 'vim-php/tagbar-phpctags.vim'
-let g:tagbar_phpctags_bin='/usr/local/bin/phpctags'
 let g:tagbar_left=1
 noremap <M-7> :TagbarToggle<CR>
 
@@ -169,6 +182,18 @@ nmap <leader>8 <Plug>BufTabLine.Go(8)
 nmap <leader>9 <Plug>BufTabLine.Go(9)
 nmap <leader>0 <Plug>BufTabLine.Go(10)
 
+" Supertab
+Plug 'ervandew/supertab'
+
+" Search Complete
+Plug 'vim-scripts/SearchComplete'
+
+" Vdebug
+Plug 'joonty/vdebug'
+
+" Tmux line
+Plug 'edkolev/tmuxline.vim'
+
 " DevIcons
 Plug 'ryanoasis/vim-devicons'
 
@@ -180,3 +205,27 @@ nnoremap <F3> :NumbersToggle<CR>
 nnoremap \\ :noh<return>
 nnoremap p ]p
 nnoremap \w :w<CR>
+autocmd InsertEnter * set cul
+autocmd InsertLeave * set nocul
+autocmd TextChanged,TextChangedI <buffer> silent write
+map <leader>v "+gP
+map <leader>c "+y
+nnoremap ; :
+map  <F1> <Esc>
+imap <F1> <Esc>
+exec 'set viminfo=%,' . &viminfo
+
+set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
+      \,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor
+      \,sm:block-blinkwait175-blinkoff150-blinkon175
+
+" Put at the very end of your .vimrc file.
+function! PhpSyntaxOverride()
+  hi! def link phpDocTags  phpDefine
+  hi! def link phpDocParam phpType
+endfunction
+
+augroup phpSyntaxOverride
+  autocmd!
+  autocmd FileType php call PhpSyntaxOverride()
+augroup END
