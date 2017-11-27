@@ -1,4 +1,3 @@
-" Config
 set ignorecase
 set smartcase
 set shiftwidth=4
@@ -7,10 +6,11 @@ set encoding=utf8
 set guifont=SauceCodePro\ Nerd\ Font\ Mono
 set tags=tags
 set tabstop=4
-set termguicolors
+"set termguicolors
 set hidden
 set nowrap
 set formatoptions-=t
+set background=dark
 filetype plugin indent on
 filetype plugin on
 colorscheme base16-circus
@@ -29,9 +29,27 @@ match ExtraWhitespace /\s\+$\|\t/
 
 " vim-plug
 call plug#begin('~/.config/nvim/plugged')
+let base16colorspace=256  " Access colors present in 256 colorspace
 
 " Base16 colorschemes
 Plug 'chriskempson/base16-vim'
+
+" Side search using ag
+Plug 'ddrscott/vim-side-search'
+" How should we execute the search?
+" --heading and --stats are required!
+let g:side_search_prg = 'ag --word-regexp'
+  \. " --ignore='*.js.map'"
+  \. " --ignore='global.php'"
+  \. " --heading --stats -B 1 -A 4"
+
+" Can use `vnew` or `new`
+let g:side_search_splitter = 'vnew'
+
+" I like 40% splits, change it if you don't
+let g:side_search_split_pct = 0.4
+
+nnoremap <Leader>ss :SideSearch <C-r><C-w><CR> | wincmd p
 
 " CLang syntax hightlighting
 Plug 'arakashic/chromatica.nvim'
@@ -81,9 +99,12 @@ Plug 'w0rp/ale'
 let g:ale_linters = {
     \   'c': ['clang'],
     \   'php': ['php'],
+    \   'js': ['jslint'],
     \}
-autocmd BufEnter *.c,*.h let g:ale_c_clang_options = join(ncm_clang#compilation_info()['args'], ' ')
+"autocmd BufEnter *.c,*.h let g:ale_c_clang_options = join(ncm_clang#compilation_info()['args'], ' ')
 let g:ale_set_signs = 1
+"let g:ale_set_balloons = 1
+let g:ale_set_highlights = 1
 let g:airline#extensions#ale#enabled = 1
 
 " NERDTree
@@ -150,8 +171,8 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 let g:UltiSnipsEditSplit="vertical"
 
 " Autotag vim
-"Plug 'craigemery/vim-autotag'
-"let g:autotagTagsFile=".tags"
+Plug 'craigemery/vim-autotag'
+let g:autotagTagsFile=".tags"
 
 " NERD Commenter
 Plug 'scrooloose/nerdcommenter'
@@ -172,6 +193,7 @@ let g:buftabline_indicators='on'
 let g:buftabline_separators='on'
 let g:buftabline_numbers=2
 nmap <leader>1 <Plug>BufTabLine.Go(1)
+"nmap 1 <Plug>BufTabLine.Go(1)
 nmap <leader>2 <Plug>BufTabLine.Go(2)
 nmap <leader>3 <Plug>BufTabLine.Go(3)
 nmap <leader>4 <Plug>BufTabLine.Go(4)
@@ -194,6 +216,22 @@ Plug 'joonty/vdebug'
 " Tmux line
 Plug 'edkolev/tmuxline.vim'
 
+function! BuildComposer(info)
+  if a:info.status != 'unchanged' || a:info.force
+    if has('nvim')
+      !cargo build --release
+    else
+      !cargo build --release --no-default-features --features json-rpc
+    endif
+  endif
+endfunction
+
+Plug 'euclio/vim-markdown-composer', { 'do': function('BuildComposer') }
+let g:markdown_composer_syntax_theme = 'rainbow'
+
+" Tabular
+Plug 'godlygeek/tabular'
+
 " DevIcons
 Plug 'ryanoasis/vim-devicons'
 
@@ -211,8 +249,6 @@ autocmd TextChanged,TextChangedI <buffer> silent write
 map <leader>v "+gP
 map <leader>c "+y
 nnoremap ; :
-map  <F1> <Esc>
-imap <F1> <Esc>
 exec 'set viminfo=%,' . &viminfo
 
 set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
@@ -229,3 +265,18 @@ augroup phpSyntaxOverride
   autocmd!
   autocmd FileType php call PhpSyntaxOverride()
 augroup END
+
+augroup myvimrc
+    au!
+    au BufWritePost .vimrc,~/.config/nvim/init.vim so $MYVIMRC | if has('gui_running') | so $MYGVIMRC | endif
+augroup END
+
+" My mappings
+noremap - dd
+imap <F1> <Esc>
+noremap <leader>ss :source ~/.config/nvim/init.vim<CR>
+vmap <Tab> >gv
+vmap <S-Tab> <gv
+nnoremap <C-J> m`o<Esc>``
+nnoremap <C-K> m`O<Esc>``
+nnoremap <C-B> :bd<CR>

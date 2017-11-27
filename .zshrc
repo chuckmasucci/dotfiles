@@ -3,8 +3,13 @@
 path+=('/usr/bin/')
 path+=('~/.local/bin/')
 path+=('/usr/lib/llvm-4.0/bin/')
+path+=('~/.cargo/bin/')
 
-TERM=screen-256color
+export PATH="$HOME/.cargo/bin:$PATH"
+
+#TERM=screen-256color
+#TERM=rxvt-unicode-256color
+#COLORTERM=rxvt-unicode-256color
 
 # Path to your oh-my-zsh installation.
 export ZSH=/home/chuck/.oh-my-zsh
@@ -91,6 +96,8 @@ source $ZSH/oh-my-zsh.sh
 alias config='/usr/bin/git --git-dir=/home/chuck/.myconfig/ --work-tree=/home/chuck'
 alias nc='nvim ~/.config/nvim/init.vim'
 alias zc='nvim ~/.zshrc'
+alias xc='nvim ~/.Xresources'
+alias tc='nvim ~/.tmux.conf'
 alias vim='nvim $1'
 alias sc='source ~/.zshrc'
 alias spacegame='cd ~/Projects/SDL/spacegame/'
@@ -105,6 +112,11 @@ prog() {
     urxvt
 }
 
+# nvim
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# Base16 Shell
+BASE16_SHELL=$HOME/.config/base16-shell/
+[ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
