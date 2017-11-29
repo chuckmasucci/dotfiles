@@ -105,6 +105,7 @@ let g:ale_set_signs = 1
 "let g:ale_set_balloons = 1
 let g:ale_set_highlights = 1
 let g:airline#extensions#ale#enabled = 1
+let g:ale_c_clang_options = '-Ilibs'
 
 " NERDTree
 Plug 'scrooloose/nerdtree'
@@ -118,12 +119,38 @@ Plug 'myusuf3/numbers.vim'
 " VIM jirline
 Plug 'bling/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-"let g:airline_theme='base16-spacemacs'
-"let g:airline_theme='tomorrow'
-"let g:airline_theme='lucius'
 let g:airline_powerline_fonts = 1
-"let g:airline#extensions#tabline#enabled = 1
-"let g:airline#extensions#tabline#show_tabs = 1
+let g:airline#extensions#tmuxline#enabled = 1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#show_tabs = 1
+let g:airline#extensions#tabline#tab_nr_type = 0
+let g:airline#extensions#tabline#show_tab_nr = 1
+let g:airline#extensions#tabline#show_tab_type = 1
+let g:airline#extensions#tabline#buffer_idx_mode = 1
+nmap <leader>1 <Plug>AirlineSelectTab1
+nmap <leader>2 <Plug>AirlineSelectTab2
+nmap <leader>3 <Plug>AirlineSelectTab3
+nmap <leader>4 <Plug>AirlineSelectTab4
+nmap <leader>5 <Plug>AirlineSelectTab5
+nmap <leader>6 <Plug>AirlineSelectTab6
+nmap <leader>7 <Plug>AirlineSelectTab7
+nmap <leader>8 <Plug>AirlineSelectTab8
+nmap <leader>9 <Plug>AirlineSelectTab9
+nmap <leader>- <Plug>AirlineSelectPrevTab
+nmap <leader>+ <Plug>AirlineSelectNextTab
+
+let g:airline#extensions#tabline#buffer_idx_format = {
+        \ '0': '0 ',
+        \ '1': '1 ',
+        \ '2': '2 ',
+        \ '3': '3 ',
+        \ '4': '4 ',
+        \ '5': '5 ',
+        \ '6': '6 ',
+        \ '7': '7 ',
+        \ '8': '8 ',
+        \ '9': '9 '
+        \}
 
 " Ctrl P
 Plug 'ctrlpvim/ctrlp.vim'
@@ -136,26 +163,6 @@ Plug 'tpope/vim-fugitive'
 
 " GitGutter
 Plug 'airblade/vim-gitgutter'
-
-" PHPactor
-Plug 'phpactor/phpactor' ,  {'do': 'composer install'}
-Plug 'roxma/ncm-phpactor'
-
-" PHP namespace
-Plug 'arnaud-lb/vim-php-namespace'
-function! IPhpInsertUse()
-    call PhpInsertUse()
-    call feedkeys('a',  'n')
-endfunction
-autocmd FileType php inoremap <Leader>u <Esc>:call IPhpInsertUse()<CR>
-autocmd FileType php noremap <Leader>u :call PhpInsertUse()<CR>
-
-function! IPhpExpandClass()
-    call PhpExpandClass()
-    call feedkeys('a', 'n')
-endfunction
-autocmd FileType php inoremap <Leader>e <Esc>:call IPhpExpandClass()<CR>
-autocmd FileType php noremap <Leader>e :call PhpExpandClass()<CR>
 
 " Ulti snips
 Plug 'SirVer/ultisnips'
@@ -189,21 +196,21 @@ let g:tagbar_left=1
 noremap <M-7> :TagbarToggle<CR>
 
 " Buf tab line
-Plug 'ap/vim-buftabline'
-let g:buftabline_indicators='on'
-let g:buftabline_separators='on'
-let g:buftabline_numbers=2
-nmap <leader>1 <Plug>BufTabLine.Go(1)
-"nmap 1 <Plug>BufTabLine.Go(1)
-nmap <leader>2 <Plug>BufTabLine.Go(2)
-nmap <leader>3 <Plug>BufTabLine.Go(3)
-nmap <leader>4 <Plug>BufTabLine.Go(4)
-nmap <leader>5 <Plug>BufTabLine.Go(5)
-nmap <leader>6 <Plug>BufTabLine.Go(6)
-nmap <leader>7 <Plug>BufTabLine.Go(7)
-nmap <leader>8 <Plug>BufTabLine.Go(8)
-nmap <leader>9 <Plug>BufTabLine.Go(9)
-nmap <leader>0 <Plug>BufTabLine.Go(10)
+"Plug 'ap/vim-buftabline'
+"let g:buftabline_indicators='on'
+"let g:buftabline_separators='on'
+"let g:buftabline_numbers=2
+"nmap <leader>1 <Plug>BufTabLine.Go(1)
+""nmap 1 <Plug>BufTabLine.Go(1)
+"nmap <leader>2 <Plug>BufTabLine.Go(2)
+"nmap <leader>3 <Plug>BufTabLine.Go(3)
+"nmap <leader>4 <Plug>BufTabLine.Go(4)
+"nmap <leader>5 <Plug>BufTabLine.Go(5)
+"nmap <leader>6 <Plug>BufTabLine.Go(6)
+"nmap <leader>7 <Plug>BufTabLine.Go(7)
+"nmap <leader>8 <Plug>BufTabLine.Go(8)
+"nmap <leader>9 <Plug>BufTabLine.Go(9)
+"nmap <leader>0 <Plug>BufTabLine.Go(10)
 
 " Supertab
 Plug 'ervandew/supertab'

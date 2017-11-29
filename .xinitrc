@@ -10,7 +10,7 @@ then
     echo "Work"
     xrdb -merge $XRESOURCES_WORK
 # Home machine
-elif [ "$UNAME" == "jedeh" ]
+elif [ "$UNAME" = "jedeh" ]
 then
     echo "Home"
     xrdb -merge $XRESOURCES_HOME
