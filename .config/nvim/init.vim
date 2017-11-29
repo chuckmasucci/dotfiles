@@ -6,14 +6,13 @@ set encoding=utf8
 set guifont=SauceCodePro\ Nerd\ Font\ Mono
 set tags=tags
 set tabstop=4
-"set termguicolors
 set hidden
 set nowrap
 set formatoptions-=t
 set background=dark
 filetype plugin indent on
 filetype plugin on
-colorscheme base16-circus
+colorscheme base16-tomorrow-night
 
 " Scripts
 " Tell Vim which characters to show for expanded TABs,
@@ -49,7 +48,7 @@ let g:side_search_splitter = 'vnew'
 " I like 40% splits, change it if you don't
 let g:side_search_split_pct = 0.4
 
-nnoremap <Leader>ss :SideSearch <C-r><C-w><CR> | wincmd p
+nnoremap <Leader>s :SideSearch <C-r><C-w><CR> | wincmd p
 
 " CLang syntax hightlighting
 Plug 'arakashic/chromatica.nvim'
@@ -116,13 +115,15 @@ map <F2> :NERDTreeToggle<CR>
 " Line Numbers
 Plug 'myusuf3/numbers.vim'
 
-" VIM Airline
+" VIM jirline
 Plug 'bling/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 "let g:airline_theme='base16-spacemacs'
 "let g:airline_theme='tomorrow'
 "let g:airline_theme='lucius'
 let g:airline_powerline_fonts = 1
+"let g:airline#extensions#tabline#enabled = 1
+"let g:airline#extensions#tabline#show_tabs = 1
 
 " Ctrl P
 Plug 'ctrlpvim/ctrlp.vim'
