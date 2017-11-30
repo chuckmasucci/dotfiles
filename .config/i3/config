@@ -5,8 +5,8 @@ set $mod Mod4
 font pango:SauceCodePro Nerd Font Mono 10
 
 # Gaps
-gaps inner 10
-gaps outer 5
+gaps inner 5
+gaps outer 2
 
 # Run compton
 exec --no-startup-id compton --config ~/.config/compton.conf
@@ -18,7 +18,7 @@ exec --no-startup-id sh ~/.xinitrc
 exec --no-startup-id ~/.fehbg
 
 # Window decorations
-for_window [class="^.*"] border pixel 5
+for_window [class="^.*"] border pixel 3
 new_window 1pixel
 
 # Colors
