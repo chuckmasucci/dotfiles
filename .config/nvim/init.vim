@@ -12,7 +12,6 @@ set formatoptions-=t
 set background=dark
 filetype plugin indent on
 filetype plugin on
-colorscheme base16-tomorrow-night
 
 " Scripts
 " Tell Vim which characters to show for expanded TABs,
@@ -288,3 +287,4 @@ vmap <S-Tab> <gv
 nnoremap <C-J> m`o<Esc>``
 nnoremap <C-K> m`O<Esc>``
 nnoremap <C-B> :bd<CR>
+colorscheme base16-tomorrow-night
