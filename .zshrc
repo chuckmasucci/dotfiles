@@ -61,7 +61,7 @@ COMPLETION_WAITING_DOTS="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(git vi-mode)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -98,6 +98,8 @@ alias nc='nvim ~/.config/nvim/init.vim'
 alias zc='nvim ~/.zshrc'
 alias xc='nvim ~/.Xresources'
 alias tc='nvim ~/.tmux.conf'
+alias ic='nvim ~/.config/i3/config'
+alias cc='nvim ~/.config/compton.conf'
 alias vim='nvim $1'
 alias sc='source ~/.zshrc'
 alias spacegame='cd ~/Projects/SDL/spacegame/'

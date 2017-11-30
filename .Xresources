@@ -5,7 +5,7 @@ Xft*hintstyle:              2
 Xft*antialias:              true
 Xft*rgba:                   rgb
 URxvt*termName:             xterm-256color
-URxvt*externalBorder:       40px
+URxvt*externalBorder:       20px
 URxvt*internalBorder:       0px
 URxvt*lineSpace:            3
 URxvt*font:                 xft:SauceCodePro\ Nerd\ Font Mono:pixelsize=19

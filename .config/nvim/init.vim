@@ -63,7 +63,7 @@ Plug 'StanAngeloff/php.vim'
 " Completion manager
 Plug 'roxma/nvim-completion-manager'
 set shortmess+=c
-map <leader>q :bp<bar>sp<bar>bn<bar>bd<CR>.
+"map <leader>q :bp<bar>sp<bar>bn<bar>bd<CR>.
 "inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 "inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
@@ -286,5 +286,6 @@ vmap <Tab> >gv
 vmap <S-Tab> <gv
 nnoremap <C-J> m`o<Esc>``
 nnoremap <C-K> m`O<Esc>``
-nnoremap <C-B> :bd<CR>
+nnoremap <C-W> :bd<CR>
+nnoremap <C-Q> :q<CR>
 colorscheme base16-tomorrow-night

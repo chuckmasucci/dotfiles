@@ -2,11 +2,17 @@
 set $mod Mod4
 
 # Font
-font pango:SauceCodePro Nerd Font Mono 15
+font pango:SauceCodePro Nerd Font Mono 10
 
 # Gaps
-gaps inner 40
-gaps outer 20
+gaps inner 10
+gaps outer 5
+
+# Run compton
+exec --no-startup-id compton --config ~/.config/compton.conf
+
+# Run .xinitrc
+exec --no-startup-id sh ~/.xinitrc
 
 # Set wallpaper
 exec --no-startup-id ~/.fehbg
@@ -16,7 +22,7 @@ for_window [class="^.*"] border pixel 5
 new_window 1pixel
 
 # Colors
-client.focused  #ffffff #ffffff #ffffff #ffffff #ffffff
+client.focused  #d3ffde #d3ffde #d3ffde #d3ffde #d3ffde
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
