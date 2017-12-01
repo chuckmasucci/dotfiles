@@ -15,3 +15,6 @@ then
     echo "Home"
     xrdb -merge $XRESOURCES_HOME
 fi
+
+xset +fp /home/chuck/.fonts
+xset fp rehash
