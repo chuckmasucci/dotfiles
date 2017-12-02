@@ -102,6 +102,7 @@ alias ic='nvim ~/.config/i3/config'
 alias cc='nvim ~/.config/compton.conf'
 alias vim='nvim $1'
 alias sc='source ~/.zshrc'
+alias pc='nvim ~/.config/polybar/config'
 alias spacegame='cd ~/Projects/SDL/spacegame/'
 
 rxvt() {
