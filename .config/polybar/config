@@ -36,8 +36,8 @@ height = 27
 radius = 0.0
 fixed-center = true
 
-background = #5a000000
-foreground = #eee
+background = #33000000
+foreground = #ffffff
 
 line-size = 3
 line-color = #f00
@@ -65,11 +65,6 @@ modules-right = filesystem volume memory cpu
 ;tray-background = #0063ff
 
 wm-restack = i3
-
-;override-redirect = true
-
-;scroll-up = bspwm-desknext
-;scroll-down = bspwm-deskprev
 
 scroll-up = i3wm-wsnext
 scroll-down = i3wm-wsprev
@@ -252,7 +247,7 @@ menu-2-1 = cancel
 menu-2-1-exec = menu-open-0
 
 [settings]
-screenchange-reload = true
+;screenchange-reload = true
 ;compositing-background = xor
 ;compositing-background = screen
 ;compositing-foreground = source
