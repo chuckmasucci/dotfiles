@@ -9,10 +9,13 @@ gaps inner 10
 gaps outer 5
 
 # Start polybar
-exec_always --no-startup-id polybar top &
+#exec_always --no-startup-id polybar top &
 
 # Run compton
-exec --no-startup-id compton --config ~/.config/compton.conf
+exec --no-startup-id compton
+
+# Run redshift
+exec --no-startup-id redshift
 
 # Run .xinitrc
 exec --no-startup-id sh ~/.xinitrc
@@ -24,11 +27,19 @@ exec --no-startup-id ~/.fehbg
 for_window [class="^.*"] border pixel 3
 new_window 1pixel
 
+# Start up
+exec --no-startup-id i3-msg 'workspace 1:Terminal; exec urxvt'
+exec --no-startup-id i3-msg 'workspace 2:Chrome; exec google-chrome-stable'
+exec --no-startup-id i3-msg 'workspace 3:Cemu; exec wine ~/.local/bin/cemu/Cemu.exe'
+
 # Colors
 client.focused  #d3ffde #d3ffde #d3ffde #d3ffde #d3ffde
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
+
+# Reload polybar
+bindsym $mod+p exec polybar-msg cmd restart
 
 # start a terminal
 bindsym $mod+Return exec urxvt
@@ -93,29 +104,40 @@ bindsym $mod+a focus parent
 # focus the child container
 #bindsym $mod+d focus child
 
+set $ws1 "code"
+set $ws2 "chrome"
+set $ws3 "games"
+set $ws4 "music"
+set $ws5 "terminal"
+set $ws6 "terminal"
+set $ws7 "terminal"
+set $ws7 "terminal"
+set $ws7 "terminal"
+set $ws7 "terminal"
+
 # switch to workspace
-bindsym $mod+1 workspace 1
-bindsym $mod+2 workspace 2
-bindsym $mod+3 workspace 3
-bindsym $mod+4 workspace 4
-bindsym $mod+5 workspace 5
-bindsym $mod+6 workspace 6
-bindsym $mod+7 workspace 7
-bindsym $mod+8 workspace 8
-bindsym $mod+9 workspace 9
-bindsym $mod+0 workspace 10
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $wsh
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
+bindsym $mod+9 workspace $ws9
+bindsym $mod+0 workspace $ws10
 
 # move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace 1
-bindsym $mod+Shift+2 move container to workspace 2
-bindsym $mod+Shift+3 move container to workspace 3
-bindsym $mod+Shift+4 move container to workspace 4
-bindsym $mod+Shift+5 move container to workspace 5
-bindsym $mod+Shift+6 move container to workspace 6
-bindsym $mod+Shift+7 move container to workspace 7
-bindsym $mod+Shift+8 move container to workspace 8
-bindsym $mod+Shift+9 move container to workspace 9
-bindsym $mod+Shift+0 move container to workspace 10
+bindsym $mod+Shift+1 move container to workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5
+bindsym $mod+Shift+6 move container to workspace $ws6
+bindsym $mod+Shift+7 move container to workspace $ws7
+bindsym $mod+Shift+8 move container to workspace $ws8
+bindsym $mod+Shift+9 move container to workspace $ws9
+bindsym $mod+Shift+10 move container to workspace $ws10
 
 # reload the configuration file
 bindsym $mod+Shift+c reload

@@ -104,6 +104,7 @@ alias vim='nvim $1'
 alias sc='source ~/.zshrc'
 alias pc='nvim ~/.config/polybar/config'
 alias spacegame='cd ~/Projects/SDL/spacegame/'
+alias m='clear && make clean && make'
 
 rxvt() {
    sed -i 's/URxvt.lineSpace: 3/URxvt.lineSpace: 0/g' ~/.Xdefaults

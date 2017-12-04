@@ -10,6 +10,11 @@ set hidden
 set nowrap
 set formatoptions-=t
 set background=dark
+set history=1000
+set shortmess+=I
+set cpoptions+=$
+set showcmd
+
 filetype plugin indent on
 filetype plugin on
 
@@ -67,27 +72,27 @@ set shortmess+=c
 "inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 "inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
-" Clang completion
+" Completion manager clang completion
 Plug 'roxma/ncm-clang'
 let g:clang_make_default_keymappings = 0
 let g:clang_auto_user_options = ''
 
 " Clang complete
-Plug 'Rip-Rip/clang_complete'
-let g:clang_use_library = 1
-let g:clang_library_path='/usr/lib/llvm-4.0/lib/'
-let g:clang_snippets_engine = 'ultisnips'
-let g:clang_make_default_keymappings = 0
-let g:clang_auto_user_options = ''
-let g:clang_complete_auto = 1
-let g:clang_hl_errors = 1
-let g:clang_periodic_quickfix = 1
-let g:clang_snippets = 1
-let g:clang_complete_optional_args_in_snippets = 1
-let g:clang_trailing_placeholder = 1
-let g:clang_close_preview = 1
-let g:clang_complete_macros = 1
-let g:clang_complete_patterns = 1
+"Plug 'Rip-Rip/clang_complete'
+"let g:clang_use_library = 1
+"let g:clang_library_path='/usr/lib/llvm-4.0/lib/'
+"let g:clang_snippets_engine = 'ultisnips'
+"let g:clang_make_default_keymappings = 0
+"let g:clang_auto_user_options = ''
+"let g:clang_complete_auto = 1
+"let g:clang_hl_errors = 1
+"let g:clang_periodic_quickfix = 1
+"let g:clang_snippets = 1
+"let g:clang_complete_optional_args_in_snippets = 1
+"let g:clang_trailing_placeholder = 1
+"let g:clang_close_preview = 1
+"let g:clang_complete_macros = 1
+"let g:clang_complete_patterns = 1
 
 " Gen tags
 Plug 'jsfaint/gen_tags.vim'
@@ -115,7 +120,7 @@ map <F2> :NERDTreeToggle<CR>
 " Line Numbers
 Plug 'myusuf3/numbers.vim'
 
-" VIM jirline
+" VIM Airline
 Plug 'bling/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 let g:airline_powerline_fonts = 1
@@ -190,7 +195,7 @@ let g:gutentags_cache_dir = '~/.vim/gutentags'
 
 " Tagbar
 Plug 'majutsushi/tagbar'
-Plug 'vim-php/tagbar-phpctags.vim'
+"Plug 'vim-php/tagbar-phpctags.vim'
 let g:tagbar_left=1
 noremap <M-7> :TagbarToggle<CR>
 
@@ -218,7 +223,7 @@ Plug 'ervandew/supertab'
 Plug 'vim-scripts/SearchComplete'
 
 " Vdebug
-Plug 'joonty/vdebug'
+"Plug 'joonty/vdebug'
 
 " Tmux line
 Plug 'edkolev/tmuxline.vim'
@@ -247,7 +252,7 @@ call plug#end()
 " My settings
 set mouse=a
 nnoremap <F3> :NumbersToggle<CR>
-nnoremap \\ :noh<return>
+nnoremap \\ :noh<CR>
 nnoremap p ]p
 nnoremap \w :w<CR>
 autocmd InsertEnter * set cul
@@ -255,7 +260,7 @@ autocmd InsertLeave * set nocul
 autocmd TextChanged,TextChangedI <buffer> silent write
 map <leader>v "+gP
 map <leader>c "+y
-nnoremap ; :
+"nnoremap ; :
 exec 'set viminfo=%,' . &viminfo
 
 set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
@@ -263,20 +268,20 @@ set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
       \,sm:block-blinkwait175-blinkoff150-blinkon175
 
 " Put at the very end of your .vimrc file.
-function! PhpSyntaxOverride()
-  hi! def link phpDocTags  phpDefine
-  hi! def link phpDocParam phpType
-endfunction
+"function! PhpSyntaxOverride()
+  "hi! def link phpDocTags  phpDefine
+  "hi! def link phpDocParam phpType
+"endfunction
 
-augroup phpSyntaxOverride
-  autocmd!
-  autocmd FileType php call PhpSyntaxOverride()
-augroup END
+"augroup phpSyntaxOverride
+  "autocmd!
+  "autocmd FileType php call PhpSyntaxOverride()
+"augroup END
 
-augroup myvimrc
-    au!
-    au BufWritePost .vimrc,~/.config/nvim/init.vim so $MYVIMRC | if has('gui_running') | so $MYGVIMRC | endif
-augroup END
+"augroup myvimrc
+    "au!
+    "au BufWritePost .vimrc,~/.config/nvim/init.vim so $MYVIMRC | if has('gui_running') | so $MYGVIMRC | endif
+"augroup END
 
 " My mappings
 noremap - dd
@@ -288,4 +293,7 @@ nnoremap <C-J> m`o<Esc>``
 nnoremap <C-K> m`O<Esc>``
 nnoremap <C-W> :bd<CR>
 nnoremap <C-Q> :q<CR>
+map <F1><ESC>
+imap <F1><ESC>
+nnoremap Y y$
 colorscheme base16-tomorrow-night
