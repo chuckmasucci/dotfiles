@@ -93,7 +93,7 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias config='/usr/bin/git --git-dir=/home/chuck/.myconfig/ --work-tree=/home/chuck'
+alias config='/usr/bin/git --git-dir=/home/chuck/.cfg/ --work-tree=/home/chuck'
 alias nc='nvim ~/.config/nvim/init.vim'
 alias zc='nvim ~/.zshrc'
 alias xc='nvim ~/.Xresources'
