@@ -11,12 +11,10 @@ set nowrap
 set formatoptions-=t
 set background=dark
 set history=1000
-set shortmess+=I
-set cpoptions+=$
+"set shortmess+=I
+"set cpoptions+=$
 set showcmd
-
 filetype plugin indent on
-filetype plugin on
 
 " Scripts
 " Tell Vim which characters to show for expanded TABs,
@@ -62,37 +60,20 @@ let g:chromatica#responsive_mode=1
 let g:chromatica#enable_at_startup=1
 
 " Vim polygot
-Plug 'sheerun/vim-polyglot'
-Plug 'StanAngeloff/php.vim'
+"Plug 'sheerun/vim-polyglot'
+"Plug 'vim-jp/vim-cpp'
 
 " Completion manager
 Plug 'roxma/nvim-completion-manager'
-set shortmess+=c
-"map <leader>q :bp<bar>sp<bar>bn<bar>bd<CR>.
+Plug 'roxma/ncm-clang'
+let g:UltiSnipsExpandTrigger = "<Plug>(ultisnips_expand)"
+inoremap <silent> <c-u> <c-r>=cm#sources#ultisnips#trigger_or_popup("\<Plug>(ultisnips_expand)")<cr>
+let g:UltiSnipsJumpForwardTrigger	= "<c-j>"
+let g:UltiSnipsJumpBackwardTrigger	= "<c-k>"
+"imap <expr> <CR>  (pumvisible() ?  "\<c-y>\<Plug>(expand_or_nl)" : "\<CR>")
+"imap <expr> <Plug>(expand_or_nl) (cm#completed_is_snippet() ? "\<C-U>":"\<CR>")
 "inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 "inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-
-" Completion manager clang completion
-Plug 'roxma/ncm-clang'
-let g:clang_make_default_keymappings = 0
-let g:clang_auto_user_options = ''
-
-" Clang complete
-"Plug 'Rip-Rip/clang_complete'
-"let g:clang_use_library = 1
-"let g:clang_library_path='/usr/lib/llvm-4.0/lib/'
-"let g:clang_snippets_engine = 'ultisnips'
-"let g:clang_make_default_keymappings = 0
-"let g:clang_auto_user_options = ''
-"let g:clang_complete_auto = 1
-"let g:clang_hl_errors = 1
-"let g:clang_periodic_quickfix = 1
-"let g:clang_snippets = 1
-"let g:clang_complete_optional_args_in_snippets = 1
-"let g:clang_trailing_placeholder = 1
-"let g:clang_close_preview = 1
-"let g:clang_complete_macros = 1
-"let g:clang_complete_patterns = 1
 
 " Gen tags
 Plug 'jsfaint/gen_tags.vim'
@@ -100,9 +81,7 @@ Plug 'jsfaint/gen_tags.vim'
 " Linter
 Plug 'w0rp/ale'
 let g:ale_linters = {
-    \   'c': ['clang'],
-    \   'php': ['php'],
-    \   'js': ['jslint'],
+    \   'c': ['gcc'],
     \}
 "autocmd BufEnter *.c,*.h let g:ale_c_clang_options = join(ncm_clang#compilation_info()['args'], ' ')
 let g:ale_set_signs = 1
@@ -174,24 +153,16 @@ Plug 'SirVer/ultisnips'
 " Snippets are separated from the engine. Add this if you want them:
 Plug 'honza/vim-snippets'
 
-" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-
-" If you want :UltiSnipsEdit to split your window.
-let g:UltiSnipsEditSplit="vertical"
-
 " Autotag vim
-Plug 'craigemery/vim-autotag'
-let g:autotagTagsFile=".tags"
+"Plug 'craigemery/vim-autotag'
+"let g:autotagTagsFile="tags"
 
 " NERD Commenter
 Plug 'scrooloose/nerdcommenter'
 
 " Gutentag
-Plug 'ludovicchabant/vim-gutentags'
-let g:gutentags_cache_dir = '~/.vim/gutentags'
+"Plug 'ludovicchabant/vim-gutentags'
+"let g:gutentags_cache_dir = '~/.vim/gutentags'
 
 " Tagbar
 Plug 'majutsushi/tagbar'
@@ -199,31 +170,11 @@ Plug 'majutsushi/tagbar'
 let g:tagbar_left=1
 noremap <M-7> :TagbarToggle<CR>
 
-" Buf tab line
-"Plug 'ap/vim-buftabline'
-"let g:buftabline_indicators='on'
-"let g:buftabline_separators='on'
-"let g:buftabline_numbers=2
-"nmap <leader>1 <Plug>BufTabLine.Go(1)
-""nmap 1 <Plug>BufTabLine.Go(1)
-"nmap <leader>2 <Plug>BufTabLine.Go(2)
-"nmap <leader>3 <Plug>BufTabLine.Go(3)
-"nmap <leader>4 <Plug>BufTabLine.Go(4)
-"nmap <leader>5 <Plug>BufTabLine.Go(5)
-"nmap <leader>6 <Plug>BufTabLine.Go(6)
-"nmap <leader>7 <Plug>BufTabLine.Go(7)
-"nmap <leader>8 <Plug>BufTabLine.Go(8)
-"nmap <leader>9 <Plug>BufTabLine.Go(9)
-"nmap <leader>0 <Plug>BufTabLine.Go(10)
-
 " Supertab
-Plug 'ervandew/supertab'
+"Plug 'ervandew/supertab'
 
 " Search Complete
 Plug 'vim-scripts/SearchComplete'
-
-" Vdebug
-"Plug 'joonty/vdebug'
 
 " Tmux line
 Plug 'edkolev/tmuxline.vim'
@@ -247,6 +198,9 @@ Plug 'godlygeek/tabular'
 " DevIcons
 Plug 'ryanoasis/vim-devicons'
 
+" Func param
+"Plug 'vim-scripts/AutoComplPop'
+
 call plug#end()
 
 " My settings
@@ -267,25 +221,8 @@ set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
       \,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor
       \,sm:block-blinkwait175-blinkoff150-blinkon175
 
-" Put at the very end of your .vimrc file.
-"function! PhpSyntaxOverride()
-  "hi! def link phpDocTags  phpDefine
-  "hi! def link phpDocParam phpType
-"endfunction
-
-"augroup phpSyntaxOverride
-  "autocmd!
-  "autocmd FileType php call PhpSyntaxOverride()
-"augroup END
-
-"augroup myvimrc
-    "au!
-    "au BufWritePost .vimrc,~/.config/nvim/init.vim so $MYVIMRC | if has('gui_running') | so $MYGVIMRC | endif
-"augroup END
-
 " My mappings
 noremap - dd
-imap <F1> <Esc>
 noremap <leader>ss :source ~/.config/nvim/init.vim<CR>
 vmap <Tab> >gv
 vmap <S-Tab> <gv
@@ -293,7 +230,5 @@ nnoremap <C-J> m`o<Esc>``
 nnoremap <C-K> m`O<Esc>``
 nnoremap <C-W> :bd<CR>
 nnoremap <C-Q> :q<CR>
-map <F1><ESC>
-imap <F1><ESC>
 nnoremap Y y$
 colorscheme base16-tomorrow-night
