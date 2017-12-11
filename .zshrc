@@ -6,6 +6,7 @@ path+=('/usr/lib/llvm-4.0/bin/')
 path+=('~/.cargo/bin/')
 
 export PATH="$HOME/.cargo/bin:$PATH"
+PATH=$PATH:~/.local/bin
 
 #TERM=screen-256color
 #TERM=rxvt-unicode-256color

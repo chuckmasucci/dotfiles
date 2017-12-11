@@ -14,6 +14,7 @@ set history=1000
 "set shortmess+=I
 "set cpoptions+=$
 set showcmd
+set linespace=0
 filetype plugin indent on
 
 " Scripts
@@ -59,10 +60,6 @@ let g:chromatica#highlight_feature_level=1
 let g:chromatica#responsive_mode=1
 let g:chromatica#enable_at_startup=1
 
-" Vim polygot
-"Plug 'sheerun/vim-polyglot'
-"Plug 'vim-jp/vim-cpp'
-
 " Completion manager
 Plug 'roxma/nvim-completion-manager'
 Plug 'roxma/ncm-clang'
@@ -70,10 +67,6 @@ let g:UltiSnipsExpandTrigger = "<Plug>(ultisnips_expand)"
 inoremap <silent> <c-u> <c-r>=cm#sources#ultisnips#trigger_or_popup("\<Plug>(ultisnips_expand)")<cr>
 let g:UltiSnipsJumpForwardTrigger	= "<c-j>"
 let g:UltiSnipsJumpBackwardTrigger	= "<c-k>"
-"imap <expr> <CR>  (pumvisible() ?  "\<c-y>\<Plug>(expand_or_nl)" : "\<CR>")
-"imap <expr> <Plug>(expand_or_nl) (cm#completed_is_snippet() ? "\<C-U>":"\<CR>")
-"inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-"inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
 " Gen tags
 Plug 'jsfaint/gen_tags.vim'
@@ -153,10 +146,6 @@ Plug 'SirVer/ultisnips'
 " Snippets are separated from the engine. Add this if you want them:
 Plug 'honza/vim-snippets'
 
-" Autotag vim
-"Plug 'craigemery/vim-autotag'
-"let g:autotagTagsFile="tags"
-
 " NERD Commenter
 Plug 'scrooloose/nerdcommenter'
 
@@ -166,7 +155,6 @@ Plug 'scrooloose/nerdcommenter'
 
 " Tagbar
 Plug 'majutsushi/tagbar'
-"Plug 'vim-php/tagbar-phpctags.vim'
 let g:tagbar_left=1
 noremap <M-7> :TagbarToggle<CR>
 
@@ -197,6 +185,12 @@ Plug 'godlygeek/tabular'
 
 " DevIcons
 Plug 'ryanoasis/vim-devicons'
+
+" gdb debugger
+Plug 'vim-scripts/Conque-GDB'
+let g:ConqueTerm_Color = 2         " 1: strip color after 200 lines, 2: always with color
+let g:ConqueTerm_CloseOnEnd = 1    " close conque when program ends running
+let g:ConqueTerm_StartMessages = 0 " display warning messages if conqueTerm is configured incorrectly
 
 " Func param
 "Plug 'vim-scripts/AutoComplPop'
