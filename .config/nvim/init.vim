@@ -81,7 +81,7 @@ let g:ale_set_signs = 1
 "let g:ale_set_balloons = 1
 let g:ale_set_highlights = 1
 let g:airline#extensions#ale#enabled = 1
-let g:ale_c_clang_options = '-Ilibs'
+let g:ale_c_gcc_options = '-I/home/chuck/.local/lib/chuck/dbg -I/home/chuck/.local/lib/chuck/list'
 
 " NERDTree
 Plug 'scrooloose/nerdtree'
@@ -96,15 +96,19 @@ Plug 'myusuf3/numbers.vim'
 Plug 'bling/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 let g:airline_powerline_fonts = 1
-let g:airline#extensions#tmuxline#enabled = 1
+"let g:airline#extensions#tmuxline#enabled = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#show_tabs = 1
 let g:airline#extensions#tabline#tab_nr_type = 0
 let g:airline#extensions#tabline#show_tab_nr = 1
 let g:airline#extensions#tabline#show_tab_type = 1
 let g:airline#extensions#tabline#buffer_idx_mode = 1
+let g:airline_left_sep = ' '
+let g:airline_left_alt_sep = ' '
+let g:airline_right_sep = ' '
+let g:airline_right_alt_sep = ' '
 nmap <leader>1 <Plug>AirlineSelectTab1
-nmap <leader>2 <Plug>AirlineSelectTab2
+map <leader>2 <Plug>AirlineSelectTab2
 nmap <leader>3 <Plug>AirlineSelectTab3
 nmap <leader>4 <Plug>AirlineSelectTab4
 nmap <leader>5 <Plug>AirlineSelectTab5
@@ -165,7 +169,7 @@ noremap <M-7> :TagbarToggle<CR>
 Plug 'vim-scripts/SearchComplete'
 
 " Tmux line
-Plug 'edkolev/tmuxline.vim'
+"Plug 'edkolev/tmuxline.vim'
 
 function! BuildComposer(info)
   if a:info.status != 'unchanged' || a:info.force
@@ -208,9 +212,7 @@ autocmd InsertLeave * set nocul
 autocmd TextChanged,TextChangedI <buffer> silent write
 map <leader>v "+gP
 map <leader>c "+y
-"nnoremap ; :
 exec 'set viminfo=%,' . &viminfo
-
 set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
       \,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor
       \,sm:block-blinkwait175-blinkoff150-blinkon175
@@ -225,4 +227,9 @@ nnoremap <C-K> m`O<Esc>``
 nnoremap <C-W> :bd<CR>
 nnoremap <C-Q> :q<CR>
 nnoremap Y y$
-colorscheme base16-tomorrow-night
+
+" Themes - replaces by base16 command line
+let theme=$BASE16_THEME
+"execute 'colorscheme ' . theme
+let g:airline_theme='angr'
+

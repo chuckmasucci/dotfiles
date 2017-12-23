@@ -18,7 +18,7 @@ export ZSH=/home/chuck/.oh-my-zsh
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="robbyrussell"
+ZSH_THEME="theunraveler"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -104,6 +104,7 @@ alias cc='nvim ~/.config/compton.conf'
 alias vim='nvim $1'
 alias sc='source ~/.zshrc'
 alias pc='nvim ~/.config/polybar/config'
+alias ac='nvim ~/.config/alacritty/alacritty.yml'
 alias spacegame='cd ~/Projects/SDL/spacegame/'
 alias m='clear && make clean && make'
 
@@ -125,3 +126,5 @@ export NVM_DIR="$HOME/.nvm"
 # Base16 Shell
 BASE16_SHELL=$HOME/.config/base16-shell/
 [ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
