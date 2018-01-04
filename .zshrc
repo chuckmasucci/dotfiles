@@ -108,17 +108,7 @@ alias ac='nvim ~/.config/alacritty/alacritty.yml'
 alias spacegame='cd ~/Projects/SDL/spacegame/'
 alias m='clear && make clean && make'
 
-rxvt() {
-   sed -i 's/URxvt.lineSpace: 3/URxvt.lineSpace: 0/g' ~/.Xdefaults
-   urxvt
-}
-
-prog() {
-    sed -i 's/URxvt.lineSpace: 0/URxvt.lineSpace: 3/g' ~/.Xdefaults
-    urxvt
-}
-
-# nvim
+# nvm
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
