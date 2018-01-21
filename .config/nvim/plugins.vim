@@ -27,7 +27,7 @@ let g:side_search_prg = 'ag --word-regexp'
 
 let g:side_search_splitter = 'vnew'
 let g:side_search_split_pct = 0.4
-nnoremap <Leader>s :SideSearch <C-r><C-w><CR> | wincmd p
+"nnoremap <Leader>s :SideSearch <C-r><C-w><CR> | wincmd p
 
 " ═════════════════════════════════════════════════════════════════
 "   A Completion Framework for Neovim
@@ -101,17 +101,17 @@ let g:airline_left_sep = ' '
 let g:airline_left_alt_sep = ' '
 let g:airline_right_sep = ' '
 let g:airline_right_alt_sep = ' '
-nmap <leader>1 <Plug>AirlineSelectTab1
-map <leader>2 <Plug>AirlineSelectTab2
-nmap <leader>3 <Plug>AirlineSelectTab3
-nmap <leader>4 <Plug>AirlineSelectTab4
-nmap <leader>5 <Plug>AirlineSelectTab5
-nmap <leader>6 <Plug>AirlineSelectTab6
-nmap <leader>7 <Plug>AirlineSelectTab7
-nmap <leader>8 <Plug>AirlineSelectTab8
-nmap <leader>9 <Plug>AirlineSelectTab9
-nmap <leader>- <Plug>AirlineSelectPrevTab
-nmap <leader>+ <Plug>AirlineSelectNextTab
+nmap <leader>1 <Plug>AirlineSelectTab1 zz
+map <leader>2 <Plug>AirlineSelectTab2 zz
+nmap <leader>3 <Plug>AirlineSelectTab3 zz
+nmap <leader>4 <Plug>AirlineSelectTab4 zz
+nmap <leader>5 <Plug>AirlineSelectTab5 zz
+nmap <leader>6 <Plug>AirlineSelectTab6 zz
+nmap <leader>7 <Plug>AirlineSelectTab7 zz
+nmap <leader>8 <Plug>AirlineSelectTab8 zz
+nmap <leader>9 <Plug>AirlineSelectTab9 zz
+nmap <leader>- <Plug>AirlineSelectPrevTab zz
+nmap <leader>+ <Plug>AirlineSelectNextTab zz
 
 let g:airline#extensions#tabline#buffer_idx_format = {
         \ '0': '0 ',
@@ -131,9 +131,9 @@ let g:airline#extensions#tabline#buffer_idx_format = {
 "   https://github.com/ctrlpvim/ctrlp.vim
 " ═════════════════════════════════════════════════════════════════
 Plug 'ctrlpvim/ctrlp.vim'
-nnoremap <Leader>o :CtrlP<CR>
-nnoremap <Leader>b :CtrlPBuffer<CR>
-nnoremap <Leader>f :CtrlPMRUFiles<CR>
+"nnoremap <Leader>o :CtrlP<CR>
+"nnoremap <Leader>b :CtrlPBuffer<CR>
+"nnoremap <Leader>f :CtrlPMRUFiles<CR>
 
 " ═════════════════════════════════════════════════════════════════
 "   fugitive.vim - a Git wrapper so awesome, it should be illegal 
@@ -184,7 +184,13 @@ Plug 'vim-scripts/SearchComplete'
 "   https://github.com/euclio/vim-markdown-composer
 " ═════════════════════════════════════════════════════════════════
 Plug 'euclio/vim-markdown-composer'
-let g:markdown_composer_syntax_theme = 'rainbow'
+"let g:markdown_composer_syntax_theme = 'tomorrow-night-eighties'
+
+" ═════════════════════════════════════════════════════════════════
+"   livedown.vim - Vim plugin for Livedown
+"   https://github.com/shime/vim-livedown
+" ═════════════════════════════════════════════════════════════════
+"Plug 'shime/vim-livedown'
 
 " ═════════════════════════════════════════════════════════════════
 "   Tabular - Vim script for text filtering and alignment
@@ -206,6 +212,58 @@ Plug 'joereynolds/place.vim'
 nmap ga <Plug>(place-insert)
 nmap gb <Plug>(place-insert-multiple)
 
+" ═════════════════════════════════════════════════════════════════
+"   vim-snipe - Targeted linewise motions and edits in Vim
+"   https://github.com/yangmillstheory/vim-snipe
+" ═════════════════════════════════════════════════════════════════
+"Plug 'yangmillstheory/vim-snipe'
+
+Plug 'easymotion/vim-easymotion/'
+"map <Leader> <Plug>(easymotion-prefix)
+"nmap s <Plug>(easymotion-s)
+
+function! s:config_easyfuzzymotion(...) abort
+  return extend(copy({
+  \   'converters': [incsearch#config#fuzzyword#converter()],
+  \   'modules': [incsearch#config#easymotion#module({'overwin': 1})],
+  \   'keymap': {"\<CR>": '<Over>(easymotion)'},
+  \   'is_expr': 0,
+  \   'is_stay': 1
+  \ }), get(a:, 1, {}))
+endfunction
+
+noremap <silent><expr> <Space>/ incsearch#go(<SID>config_easyfuzzymotion())
+
+Plug 'mhinz/vim-startify'
+let g:startify_custom_header = [
+            \ '   ███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗',
+            \ '   ████╗  ██║██╔════╝██╔═══██╗██║   ██║██║████╗ ████║',
+            \ '   ██╔██╗ ██║█████╗  ██║   ██║██║   ██║██║██╔████╔██║',
+            \ '   ██║╚██╗██║██╔══╝  ██║   ██║╚██╗ ██╔╝██║██║╚██╔╝██║',
+            \ '   ██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║',
+            \ '   ╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝',
+            \ ]
+                                                  
+
+"Plug 'othree/eregex.vim'
+Plug 'haya14busa/incsearch.vim'
+map /  <Plug>(incsearch-forward)
+map ?  <Plug>(incsearch-backward)
+map g/ <Plug>(incsearch-stay)
+" :h g:incsearch#auto_nohlsearch
+set hlsearch
+let g:incsearch#auto_nohlsearch = 1
+map n  <Plug>(incsearch-nohl-n)
+map N  <Plug>(incsearch-nohl-N)
+map *  <Plug>(incsearch-nohl-*)
+map #  <Plug>(incsearch-nohl-#)
+map g* <Plug>(incsearch-nohl-g*)
+map g# <Plug>(incsearch-nohl-g#)
+
+Plug 'haya14busa/incsearch-fuzzy.vim'
+map z/ <Plug>(incsearch-fuzzy-/)
+map z? <Plug>(incsearch-fuzzy-?)
+map zg/ <Plug>(incsearch-fuzzy-stay)
 
 " ██████╗
 "██╔════╝
@@ -213,6 +271,12 @@ nmap gb <Plug>(place-insert-multiple)
 "██║     
 "╚██████╗
 " ╚═════╝
+
+" ═════════════════════════════════════════════════════════════════
+"   c.vim https://github.com/vim-scripts/c.vim 
+"   https://github.com/vim-scripts/c.vim
+" ═════════════════════════════════════════════════════════════════
+Plug 'vim-scripts/c.vim'
 
 " ═════════════════════════════════════════════════════════════════
 "   Chromatica.nvim - Clang based syntax highlighting for Neovim

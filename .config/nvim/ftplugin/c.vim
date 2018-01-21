@@ -28,7 +28,7 @@ call plug#load('Conque-GDB')
 "   ALE
 " ═════════════════
 let g:ale_c_gcc_options = '-I/home/chuck/.local/lib/chuck/dbg -I/home/chuck/.local/lib/chuck/list'
-    \. " -I/home/chuck/.local/lib/chuck/darray"
+    \. ' -I/home/chuck/.local/lib/chuck/darray -I/home/chuck/.local/lib/chuck/bezier'
 
 
 " Load plugins

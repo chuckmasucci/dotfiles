@@ -8,9 +8,8 @@ path+=('~/.cargo/bin/')
 export PATH="$HOME/.cargo/bin:$PATH"
 PATH=$PATH:~/.local/bin
 
-#TERM=screen-256color
-#TERM=rxvt-unicode-256color
-#COLORTERM=rxvt-unicode-256color
+export "LD_LIBRARY_PATH=/home/chuck/.local/lib/chuck/dbg:/home/chuck/.local/lib/chuck/list:/home/chuck/.local/lib/chuck/darray:/home/chuck/.local/lib/chuck/bezier"
+export EDITOR "vim"
 
 # Path to your oh-my-zsh installation.
 export ZSH=/home/chuck/.oh-my-zsh
@@ -107,6 +106,7 @@ alias pc='nvim ~/.config/polybar/config'
 alias ac='nvim ~/.config/alacritty/alacritty.yml'
 alias spacegame='cd ~/Projects/SDL/spacegame/'
 alias m='clear && make clean && make'
+alias vless="nvim -u ~/.config/nvim/less.vim $1"
 
 # nvm
 export NVM_DIR="$HOME/.nvm"

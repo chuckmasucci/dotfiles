@@ -7,7 +7,7 @@ Xft*rgba:                   rgb
 URxvt*termName:             xterm-256color
 URxvt*externalBorder:       20px
 URxvt*internalBorder:       0px
-URxvt*lineSpace:            5
+URxvt*lineSpace:            0
 URxvt*letterSpace:          -1
 !URxvt*font:                 xft:SauceCodePro\ Nerd\ Font Mono:pixelsize=14
 URxvt*font:                 xft:UbuntuMono Nerd Font Mono:pixelsize=14
