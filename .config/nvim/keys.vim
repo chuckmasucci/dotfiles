@@ -23,7 +23,7 @@ nnoremap <C-J> m`o<Esc>``
 nnoremap <C-K> m`O<Esc>``
 
 " Ctrl-W - Close current buffer
-nnoremap <C-W> :bd<CR>
+nnoremap wo :bd<CR>
 
 " Ctrl-Q - Close nvim
 nnoremap <C-Q> :qall<CR>
@@ -71,7 +71,7 @@ nnoremap <C-B> <C-B>zz
 
 nmap <silent> <C-H> :wincmd k<CR>
 nmap <silent> <C-J> :wincmd j<CR>
-nmap <silent> <C-H> :wincmd h<CR>
+nmap <silent> <C-K> :wincmd h<CR>
 nmap <silent> <C-L> :wincmd l<CR>
 
 "nnoremap 1 A <esc>p
@@ -83,3 +83,13 @@ inoremap <A-h> <left>
 inoremap <A-j> <down>
 inoremap <A-k> <up>
 inoremap <A-l> <right>
+
+"nnoremap <A-j> :m .+1<CR>==
+"nnoremap <A-k> :m .-2<CR>==
+"inoremap <A-j> <Esc>:m .+1<CR>==gi
+"inoremap <A-k> <Esc>:m .-2<CR>==gi
+"vnoremap <A-j> :m '>+1<CR>gv=gv
+"vnoremap <A-k> :m '<-2<CR>gv=gv
+
+nnoremap <C-J> <C-W>j<C-W>_
+nnoremap <C-K> <C-W>k<C-W>

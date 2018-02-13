@@ -104,9 +104,10 @@ alias vim='nvim $1'
 alias sc='source ~/.zshrc'
 alias pc='nvim ~/.config/polybar/config'
 alias ac='nvim ~/.config/alacritty/alacritty.yml'
-alias spacegame='cd ~/Projects/SDL/spacegame/'
+alias spacegame='cd ~/Projects/spacegame/'
 alias m='clear && make clean && make'
 alias vless="nvim -u ~/.config/nvim/less.vim $1"
+alias start="xdg-open $1"
 
 # nvm
 export NVM_DIR="$HOME/.nvm"

@@ -27,23 +27,24 @@ let g:side_search_prg = 'ag --word-regexp'
 
 let g:side_search_splitter = 'vnew'
 let g:side_search_split_pct = 0.4
-"nnoremap <Leader>s :SideSearch <C-r><C-w><CR> | wincmd p
+nnoremap <Leader>ss :SideSearch <C-r><C-w><CR> | wincmd p
 
 " ═════════════════════════════════════════════════════════════════
 "   A Completion Framework for Neovim
 "   https://github.com/roxma/nvim-completion-manager
 " ═════════════════════════════════════════════════════════════════
-Plug 'roxma/nvim-completion-manager'
-let g:UltiSnipsExpandTrigger = "<Plug>(ultisnips_expand)"
-inoremap <silent> <c-u> <c-r>=cm#sources#ultisnips#trigger_or_popup("\<Plug>(ultisnips_expand)")<cr>
-let g:UltiSnipsJumpForwardTrigger	= "<c-j>"
-let g:UltiSnipsJumpBackwardTrigger	= "<c-k>"
+"Plug 'roxma/nvim-completion-manager'
+"let g:UltiSnipsExpandTrigger = "<Plug>(ultisnips_expand)"
+"inoremap <silent> <c-u> <c-r>=cm#sources#ultisnips#trigger_or_popup("\<Plug>(ultisnips_expand)")<cr>
+"let g:UltiSnipsJumpForwardTrigger	= "<c-j>"
+"let g:UltiSnipsJumpBackwardTrigger	= "<c-k>"
 
 " ═════════════════════════════════════════════════════════════════
 "   Vim-Tags - Ctags generator for Vim
 "   https://github.com/szw/vim-tags
 " ═════════════════════════════════════════════════════════════════
 Plug 'jsfaint/gen_tags.vim'
+let g:gen_tags#gtags_auto_gen = 1
 
 " ═════════════════════════════════════════════════════════════════
 "   ALE (Asynchronous Lint Engine) - plugin for providing linting in NeoVim and Vim 8 while you edit your text files.
@@ -52,7 +53,10 @@ Plug 'jsfaint/gen_tags.vim'
 Plug 'w0rp/ale'
 let g:ale_linters = {
     \   'c': ['gcc'],
-    \   'javascript': ['eslint']
+    \   'javascript': ['eslint'],
+    \   'typescript': ['tslint'],
+    \   'sass': ['sass-lint'],
+    \   'scss': ['sass-lint']
     \}
 let g:ale_set_signs = 1
 let g:ale_set_highlights = 1
@@ -91,6 +95,7 @@ Plug 'bling/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 let g:airline_powerline_fonts = 1
 "let g:airline#extensions#tmuxline#enabled = 1
+let g:airline#extensions#tabline#formatter = 'tsformatter'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#show_tabs = 1
 let g:airline#extensions#tabline#tab_nr_type = 0
@@ -245,8 +250,10 @@ let g:startify_custom_header = [
             \ ]
                                                   
 
-"Plug 'othree/eregex.vim'
+Plug 'othree/eregex.vim'
 Plug 'haya14busa/incsearch.vim'
+Plug 'haya14busa/incsearch-fuzzy.vim'
+Plug 'haya14busa/incsearch-easymotion.vim'
 map /  <Plug>(incsearch-forward)
 map ?  <Plug>(incsearch-backward)
 map g/ <Plug>(incsearch-stay)
@@ -260,10 +267,47 @@ map #  <Plug>(incsearch-nohl-#)
 map g* <Plug>(incsearch-nohl-g*)
 map g# <Plug>(incsearch-nohl-g#)
 
-Plug 'haya14busa/incsearch-fuzzy.vim'
 map z/ <Plug>(incsearch-fuzzy-/)
 map z? <Plug>(incsearch-fuzzy-?)
 map zg/ <Plug>(incsearch-fuzzy-stay)
+
+function! s:config_easyfuzzymotion(...) abort
+  return extend(copy({
+  \   'converters': [incsearch#config#fuzzy#converter()],
+  \   'modules': [incsearch#config#easymotion#module()],
+  \   'keymap': {"\<CR>": '<Over>(easymotion)'},
+  \   'is_expr': 0,
+  \   'is_stay': 1
+  \ }), get(a:, 1, {}))
+endfunction
+
+noremap <silent><expr> <Space>/ incsearch#go(<SID>config_easyfuzzymotion())
+
+"Plug 'Shougo/denite.nvim'
+
+Plug 'Raimondi/delimitMate'
+
+Plug 'tpope/vim-surround'
+
+Plug 'kshenoy/vim-signature'
+
+Plug 'Yggdroot/indentLine'
+let g:indentLine_char = '┆'
+
+"Plug 'vim-scripts/Greplace.vim'
+Plug 'dkprice/vim-easygrep'
+let g:EasyGrepFilesToExclude=".svn,.git,*.o"
+let g:EasyGrepReplaceWindowMode=2
+
+"Plug 'vim-scripts/AutoComplPop'
+
+Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
+
+Plug 'prettier/vim-prettier', { 'do': 'npm install' }
+let g:prettier#config#tab_width = 4
+let g:prettier#config#use_tabs = 'false'
+
+Plug 'tpope/vim-eunuch'
 
 " ██████╗
 "██╔════╝
@@ -294,7 +338,25 @@ Plug 'vim-scripts/Conque-GDB', { 'on': [], 'for': 'c' }
 "   ncm-clang - clang completion for nvim-completion-manager
 "   https://github.com/roxma/ncm-clang
 " ═════════════════════════════════════════════════════════════════
-Plug 'roxma/ncm-clang', { 'on': [], 'for': 'c' }
+"Plug 'roxma/ncm-clang', { 'on': [], 'for': 'c' }
+
+Plug 'Valloric/YouCompleteMe', { 'do': 'cmake' }
+"Plug 'ervandew/supertab'
+
+" make YCM compatible with UltiSnips (using supertab)
+let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+let g:SuperTabDefaultCompletionType = '<C-n>'
+
+" better key bindings for UltiSnipsExpandTrigger
+let g:UltiSnipsExpandTrigger = "<tab>"
+let g:UltiSnipsJumpForwardTrigger = "<tab>"
+let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
+
+" Typescript
+Plug 'HerringtonDarkholme/yats.vim'
+Plug 'leafgarland/typescript-vim'
+Plug 'peitalin/vim-jsx-typescript'
 
 
 
@@ -328,6 +390,14 @@ Plug 'mxw/vim-jsx', { 'on': [], 'for': 'js' }
 "   https://github.com/elzr/vim-json
 " ═════════════════════════════════════════════════════════════════
 Plug 'elzr/vim-json', { 'on': [], 'for': 'js' }
+set conceallevel=0
+let g:vim_json_syntax_conceal = 0
+augroup jsonshow
+  au!
+  au FileType json set conceallevel=2
+  au FileType json let g:json_conceal="adgms"
+  au FileType json hi Conceal guibg=White guifg=DarkMagenta
+augroup END
 
 " ═════════════════════════════════════════════════════════════════
 "   jsdoc.vim - generates JSDoc block comments based on a function signature.
@@ -347,5 +417,13 @@ Plug 'othree/javascript-libraries-syntax.vim', { 'on': [], 'for': 'js' }
 " ═════════════════════════════════════════════════════════════════
 Plug 'othree/jspc.vim', { 'on': [], 'for': 'js' }
 
-call plug#end()
+Plug 'ternjs/tern_for_vim'
+let g:tern_show_argument_hints='on_hold'
+let g:tern_map_keys=1
 
+" CSS
+Plug 'hail2u/vim-css3-syntax'
+Plug 'cakebaker/scss-syntax.vim'
+Plug 'shmargum/vim-sass-colors'
+
+call plug#end()

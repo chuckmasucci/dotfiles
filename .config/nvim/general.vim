@@ -1,7 +1,7 @@
 " SETTINGS
 set ignorecase
 set smartcase
-set shiftwidth=4
+set shiftwidth=0
 set expandtab
 set encoding=utf8
 set guifont=SauceCodePro\ Nerd\ Font\ Mono
@@ -49,10 +49,15 @@ execute 'colorscheme base16-' . theme
 let g:airline_theme='angr'
 
 " Keep selected line centered
-"augroup VCenterCursor
-  "au!
-  "au BufEnter,WinEnter,WinNew,VimResized *,*.*
-        "\ let &scrolloff=winheight(win_getid())/2
-"augroup END
+augroup VCenterCursor
+  au!
+  au BufEnter,WinEnter,WinNew,VimResized *,*.*
+        \ let &scrolloff=winheight(win_getid())/2
+augroup END
 
+" Fix vim-css3-syntax
+augroup VimCSS3Syntax
+  autocmd!
 
+  autocmd FileType css setlocal iskeyword+=-
+augroup END

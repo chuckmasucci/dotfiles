@@ -32,4 +32,4 @@ let g:ale_c_gcc_options = '-I/home/chuck/.local/lib/chuck/dbg -I/home/chuck/.loc
 
 
 " Load plugins
-call plug#load('ncm-clang')
+"call plug#load('ncm-clang')
