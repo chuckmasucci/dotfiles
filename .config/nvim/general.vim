@@ -24,9 +24,13 @@ set foldmethod=indent
 set foldnestmax=10
 set nofoldenable
 set foldlevel=3
+set conceallevel=0
 set numberwidth=5
 set wmh=0
 set list
+autocmd FileType javascript setlocal tabstop=2 shiftwidth=2 softtabstop=2
+autocmd FileType typescript setlocal tabstop=2 shiftwidth=2 softtabstop=2
+autocmd FileType markdown setlocal tabstop=2 shiftwidth=2 softtabstop=2
 
 " Enable cursor line position tracking:
 :set cursorline
@@ -44,8 +48,13 @@ exec 'set viminfo=%,' . &viminfo
 
 " THEMES
 let base16colorspace=256  " Access colors present in 256 colorspace
-let theme=$BASE16_THEME
-execute 'colorscheme base16-' . theme
+if $BASE16_THEME
+    let theme=$BASE16_THEME
+    execute 'colorscheme base16-' . theme
+else
+    execute 'colorscheme base16-chalk'
+endif
+
 let g:airline_theme='angr'
 
 " Keep selected line centered

@@ -61,6 +61,7 @@ let g:ale_linters = {
 let g:ale_set_signs = 1
 let g:ale_set_highlights = 1
 let g:airline#extensions#ale#enabled = 1
+let g:ale_typescript_tslint_config_path = '~/.local/share/linters/'
 
 " ═════════════════════════════════════════════════════════════════
 "   The NERDTree - tree explorer plugin
@@ -189,7 +190,7 @@ Plug 'vim-scripts/SearchComplete'
 "   https://github.com/euclio/vim-markdown-composer
 " ═════════════════════════════════════════════════════════════════
 Plug 'euclio/vim-markdown-composer'
-"let g:markdown_composer_syntax_theme = 'tomorrow-night-eighties'
+""let g:markdown_composer_syntax_theme = 'tomorrow-night-eighties'
 
 " ═════════════════════════════════════════════════════════════════
 "   livedown.vim - Vim plugin for Livedown
@@ -304,10 +305,19 @@ let g:EasyGrepReplaceWindowMode=2
 Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
 
 Plug 'prettier/vim-prettier', { 'do': 'npm install' }
-let g:prettier#config#tab_width = 4
-let g:prettier#config#use_tabs = 'false'
+"let g:prettier#config#tab_width = 4
+"let g:prettier#config#use_tabs = 'false'
+let g:prettier#config#tab_width = 2
+let g:prettier#config#single_quote = 'true'
 
 Plug 'tpope/vim-eunuch'
+
+Plug 'embear/vim-localvimrc'
+
+
+
+
+
 
 " ██████╗
 "██╔════╝
@@ -372,6 +382,7 @@ Plug 'peitalin/vim-jsx-typescript'
 "   https://github.com/othree/yajs.vim
 " ═════════════════════════════════════════════════════════════════
 Plug 'othree/yajs.vim', { 'on': [], 'for': 'js' }
+Plug 'maxmellon/vim-jsx-pretty'
 
 " ═════════════════════════════════════════════════════════════════
 "   Vim JavaScript Context Coloring - syntax highlighting
@@ -389,7 +400,7 @@ Plug 'mxw/vim-jsx', { 'on': [], 'for': 'js' }
 "   Better JSON for VIM - Distinct highlighting of keywords vs values, JSON-specific (non-JS) warnings, quote concealing.
 "   https://github.com/elzr/vim-json
 " ═════════════════════════════════════════════════════════════════
-Plug 'elzr/vim-json', { 'on': [], 'for': 'js' }
+Plug 'elzr/vim-json'
 set conceallevel=0
 let g:vim_json_syntax_conceal = 0
 augroup jsonshow

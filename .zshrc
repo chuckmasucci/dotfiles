@@ -5,6 +5,8 @@ path+=('~/.local/bin/')
 path+=('/usr/lib/llvm-4.0/bin/')
 path+=('~/.cargo/bin/')
 
+fpath=(~/.zsh/completion $fpath)
+
 export PATH="$HOME/.cargo/bin:$PATH"
 PATH=$PATH:~/.local/bin
 
@@ -62,6 +64,7 @@ COMPLETION_WAITING_DOTS="true"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git)
+plugins+=(docker-machine)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -108,6 +111,12 @@ alias spacegame='cd ~/Projects/spacegame/'
 alias m='clear && make clean && make'
 alias vless="nvim -u ~/.config/nvim/less.vim $1"
 alias start="xdg-open $1"
+alias fr-ui-patterns='cd ~/Projects/forgerock/web/ui-patterns'
+alias fr-ui-react-admin='cd ~/Projects/forgerock/web/ui-react-admin'
+alias fr-ui-styles='cd ~/Projects/forgerock/web/ui-styles'
+
+# autoload
+autoload -Uz compinit && compinit -i
 
 # nvm
 export NVM_DIR="$HOME/.nvm"
