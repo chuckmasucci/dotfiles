@@ -49,7 +49,7 @@ map <leader>c "+y
 " Q - Repeat last macro
 nnoremap Q @@
 
-" Ctrl-l insert jsdoc 
+
 nmap <silent> <C-l> <Plug>(jsdoc)
 
 " Snipe

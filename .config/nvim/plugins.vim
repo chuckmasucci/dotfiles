@@ -1,4 +1,3 @@
-" vim-plug
 call plug#begin('~/.config/nvim/plugged')
 
 
@@ -55,13 +54,14 @@ let g:ale_linters = {
     \   'c': ['gcc'],
     \   'javascript': ['eslint'],
     \   'typescript': ['tslint'],
-    \   'sass': ['sass-lint'],
-    \   'scss': ['sass-lint']
+    \   'sass': ['scsslint'],
+    \   'scss': ['scsslint']
     \}
+let g:ale_fix_on_save = 1
 let g:ale_set_signs = 1
 let g:ale_set_highlights = 1
-let g:airline#extensions#ale#enabled = 1
-let g:ale_typescript_tslint_config_path = '~/.local/share/linters/'
+"let g:ale_typescript_tslint_config_path = '~/.local/share/linters/'
+nmap <F8> <Plug>(ale_fix)
 
 " ═════════════════════════════════════════════════════════════════
 "   The NERDTree - tree explorer plugin
@@ -137,6 +137,12 @@ let g:airline#extensions#tabline#buffer_idx_format = {
 "   https://github.com/ctrlpvim/ctrlp.vim
 " ═════════════════════════════════════════════════════════════════
 Plug 'ctrlpvim/ctrlp.vim'
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/]\.(git|hg|svn)|node_modules$',
+  \ 'file': '\v\.(exe|so|dll)$',
+  \ 'link': 'some_bad_symbolic_links',
+  \ }
+let g:ctrlp_dotfiles = 1
 "nnoremap <Leader>o :CtrlP<CR>
 "nnoremap <Leader>b :CtrlPBuffer<CR>
 "nnoremap <Leader>f :CtrlPMRUFiles<CR>
@@ -314,7 +320,7 @@ Plug 'tpope/vim-eunuch'
 
 Plug 'embear/vim-localvimrc'
 
-
+Plug 'tomasiser/vim-code-dark'
 
 
 
@@ -364,7 +370,7 @@ let g:UltiSnipsJumpForwardTrigger = "<tab>"
 let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 
 " Typescript
-Plug 'HerringtonDarkholme/yats.vim'
+"Plug 'HerringtonDarkholme/yats.vim'
 Plug 'leafgarland/typescript-vim'
 Plug 'peitalin/vim-jsx-typescript'
 
@@ -381,7 +387,7 @@ Plug 'peitalin/vim-jsx-typescript'
 "   YAJS: Yet Another JavaScript Syntax - syntax highlighting
 "   https://github.com/othree/yajs.vim
 " ═════════════════════════════════════════════════════════════════
-Plug 'othree/yajs.vim', { 'on': [], 'for': 'js' }
+Plug 'othree/yajs.vim'
 Plug 'maxmellon/vim-jsx-pretty'
 
 " ═════════════════════════════════════════════════════════════════
@@ -394,13 +400,13 @@ Plug 'bigfish/vim-js-context-coloring', { 'on': [], 'for': 'js' }
 "   vim-jsx - Syntax highlighting and indenting for JSX
 "   https://github.com/mxw/vim-jsx
 " ═════════════════════════════════════════════════════════════════
-Plug 'mxw/vim-jsx', { 'on': [], 'for': 'js' }
+Plug 'mxw/vim-jsx'
 
 " ═════════════════════════════════════════════════════════════════
 "   Better JSON for VIM - Distinct highlighting of keywords vs values, JSON-specific (non-JS) warnings, quote concealing.
 "   https://github.com/elzr/vim-json
 " ═════════════════════════════════════════════════════════════════
-Plug 'elzr/vim-json'
+"Plug 'elzr/vim-json'
 set conceallevel=0
 let g:vim_json_syntax_conceal = 0
 augroup jsonshow
@@ -426,15 +432,30 @@ Plug 'othree/javascript-libraries-syntax.vim', { 'on': [], 'for': 'js' }
 "   JavaScript Parameter Complete - JavaScript Parameter Complete(JSPC) is a completion function for function parameters, such as event names, crypto algorithms, and common locales.
 "   https://github.com/othree/jspc.vim
 " ═════════════════════════════════════════════════════════════════
-Plug 'othree/jspc.vim', { 'on': [], 'for': 'js' }
+Plug 'othree/jspc.vim'
 
-Plug 'ternjs/tern_for_vim'
+"Plug 'ternjs/tern_for_vim'
 let g:tern_show_argument_hints='on_hold'
 let g:tern_map_keys=1
 
 " CSS
 Plug 'hail2u/vim-css3-syntax'
+augroup VimCSS3Syntax
+  autocmd!
+
+  autocmd FileType css setlocal iskeyword+=-
+augroup END
+
 Plug 'cakebaker/scss-syntax.vim'
-Plug 'shmargum/vim-sass-colors'
+au BufRead,BufNewFile *.scss set filetype=scss.css
+autocmd FileType scss set iskeyword+=-
+
+"Plug 'shmargum/vim-sass-colors'
+
+"HTML
+
+Plug 'mattn/emmet-vim'
+let g:user_emmet_install_global = 0
+autocmd FileType html,css,scss EmmetInstall
 
 call plug#end()

@@ -24,3 +24,4 @@ else
   polybar --reload top &
 fi
 
+source ~/.capslock
