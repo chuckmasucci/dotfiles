@@ -1,6 +1,0 @@
-@import url("/usr/share/gnome-shell/theme/gnome-shell.css");
-
-#lockDialogGroup {
-  background: #2e3436 url(resource:///org/gnome/shell/theme/noise-texture.png);
-  background-repeat: repeat; }
-
