@@ -18,25 +18,15 @@ Plug 'chriskempson/base16-vim'
 "   vim-side-search - Search context in Vim in a sidebar using `ag` output
 "   https://github.com/ddrscott/vim-side-search
 " ═════════════════════════════════════════════════════════════════
-Plug 'ddrscott/vim-side-search'
-let g:side_search_prg = 'ag --word-regexp'
-  \. " --ignore='*.js.map'"
-  \. " --ignore='global.php'"
-  \. " --heading --stats -B 1 -A 4"
+"Plug 'ddrscott/vim-side-search'
+"let g:side_search_prg = 'ag --word-regexp'
+  "\. " --ignore='*.js.map'"
+  "\. " --ignore='global.php'"
+  "\. " --heading --stats -B 1 -A 4"
 
-let g:side_search_splitter = 'vnew'
-let g:side_search_split_pct = 0.4
-nnoremap <Leader>ss :SideSearch <C-r><C-w><CR> | wincmd p
-
-" ═════════════════════════════════════════════════════════════════
-"   A Completion Framework for Neovim
-"   https://github.com/roxma/nvim-completion-manager
-" ═════════════════════════════════════════════════════════════════
-"Plug 'roxma/nvim-completion-manager'
-"let g:UltiSnipsExpandTrigger = "<Plug>(ultisnips_expand)"
-"inoremap <silent> <c-u> <c-r>=cm#sources#ultisnips#trigger_or_popup("\<Plug>(ultisnips_expand)")<cr>
-"let g:UltiSnipsJumpForwardTrigger	= "<c-j>"
-"let g:UltiSnipsJumpBackwardTrigger	= "<c-k>"
+"let g:side_search_splitter = 'vnew'
+"let g:side_search_split_pct = 0.4
+"nnoremap <Leader>ss :SideSearch <C-r><C-w><CR> | wincmd p
 
 " ═════════════════════════════════════════════════════════════════
 "   Vim-Tags - Ctags generator for Vim
@@ -95,8 +85,8 @@ Plug 'myusuf3/numbers.vim'
 Plug 'bling/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 let g:airline_powerline_fonts = 1
-"let g:airline#extensions#tmuxline#enabled = 1
-let g:airline#extensions#tabline#formatter = 'tsformatter'
+let g:airline#extensions#tmuxline#enabled = 1
+"let g:airline#extensions#tabline#formatter = 'tsformatter'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#show_tabs = 1
 let g:airline#extensions#tabline#tab_nr_type = 0
@@ -157,7 +147,7 @@ Plug 'tpope/vim-fugitive'
 "   vim-gitgutter - shows a git diff in the 'gutter' (sign column)
 "   https://github.com/airblade/vim-gitgutter
 " ═════════════════════════════════════════════════════════════════
-Plug 'airblade/vim-gitgutter'
+"Plug 'airblade/vim-gitgutter'
 
 " ═════════════════════════════════════════════════════════════════
 "   UltiSnips - the ultimate solution for snippets in Vim
@@ -175,7 +165,7 @@ Plug 'honza/vim-snippets'
 "   NERD Commenter - Vim plugin for intensely orgasmic commenting
 "   https://github.com/scrooloose/nerdcommenter
 " ═════════════════════════════════════════════════════════════════
-Plug 'scrooloose/nerdcommenter'
+"Plug 'scrooloose/nerdcommenter'
 
 " ═════════════════════════════════════════════════════════════════
 "   Tagbar - Vim plugin that displays tags in a window, ordered by scope
@@ -189,7 +179,7 @@ noremap <M-7> :TagbarToggle<CR>
 "   SearchComplete - Tab completion of words inside of a search ('/')
 "   https://github.com/vim-scripts/SearchComplete
 " ═════════════════════════════════════════════════════════════════
-Plug 'vim-scripts/SearchComplete'
+"Plug 'vim-scripts/SearchComplete'
 
 " ═════════════════════════════════════════════════════════════════
 "   vim-markdown-composer - An asynchronous markdown preview plugin for Vim and Neovim
@@ -197,12 +187,6 @@ Plug 'vim-scripts/SearchComplete'
 " ═════════════════════════════════════════════════════════════════
 Plug 'euclio/vim-markdown-composer'
 ""let g:markdown_composer_syntax_theme = 'tomorrow-night-eighties'
-
-" ═════════════════════════════════════════════════════════════════
-"   livedown.vim - Vim plugin for Livedown
-"   https://github.com/shime/vim-livedown
-" ═════════════════════════════════════════════════════════════════
-"Plug 'shime/vim-livedown'
 
 " ═════════════════════════════════════════════════════════════════
 "   Tabular - Vim script for text filtering and alignment
@@ -220,9 +204,9 @@ Plug 'ryanoasis/vim-devicons'
 "   place.vim - allows you to add insertions to your text without moving your cursor.
 "   https://github.com/joereynolds/place.vim
 " ═════════════════════════════════════════════════════════════════
-Plug 'joereynolds/place.vim'
-nmap ga <Plug>(place-insert)
-nmap gb <Plug>(place-insert-multiple)
+"Plug 'joereynolds/place.vim'
+"nmap ga <Plug>(place-insert)
+"nmap gb <Plug>(place-insert-multiple)
 
 " ═════════════════════════════════════════════════════════════════
 "   vim-snipe - Targeted linewise motions and edits in Vim

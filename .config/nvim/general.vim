@@ -65,11 +65,11 @@ execute 'colorscheme astraios'
 let g:airline_theme='codedark'
 
 " Keep selected line centered
-augroup VCenterCursor
-  au!
-  au BufEnter,WinEnter,WinNew,VimResized *,*.*
-        \ let &scrolloff=winheight(win_getid())/2
-augroup END
+"augroup VCenterCursor
+"  au!
+"  au BufEnter,WinEnter,WinNew,VimResized *,*.*
+"        \ let &scrolloff=winheight(win_getid())/2
+"augroup END
 
 " Fix vim-css3-syntax
 augroup VimCSS3Syntax
@@ -77,3 +77,6 @@ augroup VimCSS3Syntax
 
   autocmd FileType css setlocal iskeyword+=-
 augroup END
+
+" Set typescript filetype for tsx files
+autocmd BufEnter *.tsx set filetype=typescript

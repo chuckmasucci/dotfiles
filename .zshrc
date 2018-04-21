@@ -19,7 +19,7 @@ export ZSH=/home/chuck/.oh-my-zsh
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="spaceship"
+ZSH_THEME="avit"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
 COMPLETION_WAITING_DOTS="true"
@@ -32,6 +32,8 @@ plugins+=(zsh-autosuggestions)
 plugins+=(zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
+killall xcape
+source $HOME/.local/bin/keymap.sh
 
 # User configuration
 # Preferred editor for local and remote sessions

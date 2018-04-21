@@ -64,11 +64,6 @@ nmap <silent> <C-l> <Plug>(jsdoc)
 "nmap <leader><leader>a <Plug>(snipe-f-a)
 "nmap <leader><leader>A <Plug>(snipe-F-a)
 
-nnoremap j jzz
-nnoremap k kzz
-nnoremap <C-F> <C-F>zz
-nnoremap <C-B> <C-B>zz
-
 nmap <silent> <C-H> :wincmd k<CR>
 nmap <silent> <C-J> :wincmd j<CR>
 nmap <silent> <C-K> :wincmd h<CR>
