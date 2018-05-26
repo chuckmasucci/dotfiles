@@ -10,7 +10,7 @@ fpath=(~/.zsh/completion $fpath)
 export PATH="$HOME/.cargo/bin:$PATH"
 PATH=$PATH:~/.local/bin
 
-export "LD_LIBRARY_PATH=/home/chuck/.local/lib/chuck/dbg:/home/chuck/.local/lib/chuck/list:/home/chuck/.local/lib/chuck/darray:/home/chuck/.local/lib/chuck/bezier"
+export "LD_LIBRARY_PATH=$HOME/.local/lib/dbg:$HOME/.local/lib/list:$HOME/.local/lib/chuck/darray:$HOME/.local/lib/bezier"
 export EDITOR "vim"
 
 # Path to your oh-my-zsh installation.
@@ -111,6 +111,7 @@ alias start="xdg-open $1"
 alias fr-ui-patterns='cd ~/Projects/forgerock/web/ui-patterns'
 alias fr-ui-react-admin='cd ~/Projects/forgerock/web/ui-react-admin'
 alias fr-ui-styles='cd ~/Projects/forgerock/web/ui-styles'
+alias clang-format='clang-format-6.0'
 
 # autoload
 autoload -Uz compinit && compinit -i
