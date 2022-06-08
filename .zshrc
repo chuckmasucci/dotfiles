@@ -37,8 +37,9 @@ zle -N zle-keymap-select
 source $ZSH/oh-my-zsh.sh
 
 # aliases
-alias zshconfig="nvim ~/.zshrc"
+alias config='/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME'
 alias ohmyzsh="nvim ~/.oh-my-zsh"
+alias zshconfig="nvim ~/.zshrc"
 
 # node version manager
 export NVM_DIR="$HOME/.nvm"
