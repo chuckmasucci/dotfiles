@@ -11,7 +11,7 @@ export XDG_DATA_HOME="$HOME/.local/share"
 path+=('/home/chuck/.local/bin')
 
 # Plugins
-plugins=(git vi-mode colorize cp tmux tmuxinator)
+plugins=(git vi-mode colorize cp tmux fzf)
 
 # Theme
 ZSH_THEME="robbyrussell"
