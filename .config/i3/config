@@ -9,9 +9,9 @@ gaps outer 0
 focus_follows_mouse no
 
 # borders
-default_border pixel 2
+default_border pixel 0
 
-#font
+# font
 font pango:ProFontIIx 10
 
 # startup apps
@@ -19,6 +19,8 @@ exec --no-startup-id dex --autostart --environment i3
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 exec --no-startup-id nm-applet
 exec --no-startup-id redshift
+exec --no-startup-id picom --experimental-backends
+exec_always --no-startup-id hsetroot -solid "#444444"
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
