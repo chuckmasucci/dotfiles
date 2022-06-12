@@ -27,6 +27,7 @@ bindkey '\e[B' history-beginning-search-forward
 
 # Aliases
 alias i3config="$EDITOR ~/.config/i3/i3.config"
+alias list-fonts="kitty + list-fonts --psnames"
 alias nvimconfig="cd ~/.config/lvim/ && $EDITOR config.lua"
 alias picomconfig="$EDITOR ~/.config/picom/picom.conf"
 alias tmuxconfig="$EDITOR ~/.tmux.conf.local"
