@@ -9,6 +9,7 @@ export XDG_DATA_HOME="$HOME/.local/share"
 
 # Path
 path+=('/home/chuck/.local/bin')
+path+=('/usr/lib/w3m')
 
 # Plugins
 plugins=(git vi-mode colorize cp tmux fzf)
@@ -26,9 +27,11 @@ bindkey '\e[A' history-beginning-search-backward
 bindkey '\e[B' history-beginning-search-forward
 
 # Aliases
-alias i3config="$EDITOR ~/.config/i3/i3.config"
-alias list-fonts="kitty + list-fonts --psnames"
+alias i3config="$EDITOR ~/.config/i3/config"
+# alias list-fonts="kitty + list-fonts --psnames"
+alias lf="fc-list : family | sort | uniq"
 alias nvimconfig="cd ~/.config/lvim/ && $EDITOR config.lua"
+alias nvim="lvim"
 alias picomconfig="$EDITOR ~/.config/picom/picom.conf"
 alias tmuxconfig="$EDITOR ~/.tmux.conf.local"
 alias zshconfig="$EDITOR ~/.zshrc"
@@ -44,3 +47,7 @@ function zle-keymap-select zle-line-init zle-line-finish {
 zle -N zle-line-init
 zle -N zle-line-finish
 zle -N zle-keymap-select
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
