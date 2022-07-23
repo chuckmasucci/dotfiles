@@ -2,17 +2,21 @@
 set $mod Mod4
 
 # gaps
-gaps inner 20
+gaps inner 10
 gaps outer 0
 
 # focus
 focus_follows_mouse no
+focus_on_window_activation focus
 
 # borders
 default_border pixel 0
 
 # font
 font pango:ProFontIIx 10
+
+# hide edge borders
+hide_edge_borders none
 
 # colors
 
@@ -32,8 +36,13 @@ exec --no-startup-id nm-applet
 exec --no-startup-id picom --experimental-backends
 exec --no-startup-id redshift
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+exec --no-startup-id ~/.local/bin/ewwlaunch
+exec --no-startup-id udiskie --tray
 exec_always --no-startup-id hsetroot -solid "#444444"
 exec_always --no-startup-id update-wallpaper
+exec_always --no-startup-id kitti3 -p TC -s 0.5 0.3
+exec_always --no-startup-id ulauncher
+bindsym $mod+n nop kitti3
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
@@ -113,10 +122,19 @@ bindsym Control+Shift+space exec --no-startup-id dunstctl close-all
 
 # rofi
 # bindsym $mod+grave exec "rofi -show drun -show-icons
-bindsym $mod+grave exec ~/.config/rofi/bin/launcher_text
+# bindsym Mod1+space exec ~/.config/rofi/current/launcher
+
+# Chrome tabs
+exec_always --no-startup-id ~/.local/bin/i3-chrome-tab-dragging.py
 
 # screenshot
 bindsym --release $mod+Shift+Print exec --no-startup-id "maim -s | tee /home/chuck/$(date '+%d-%m-%Y--%R:%S').png | xclip -t image/png -selection clipboard"
+
+bindsym $mod+Shift+Return exec --no-startup-id kitty --class floating --hold -e glow ~/Documents/vimspector-cheat-sheet.md
+for_window [instance="floating"] floating enabled
+for_window [instance="floating"] move position 2000 0
+for_window [instance="floating"] resize set 1920 1080
+
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
@@ -169,6 +187,8 @@ for_window [class="Google-chrome" instance="crx_hpfldicfbfomlpcikngkocigghgafkph
 for_window [window_role="pop-up"] floating enable
 for_window [id=111149061 title="Android Emulator - Pixel_3_XL_API_30:5554"] floating enable
 for_window [class="awakened-poe-trade"] floating enable
+# for_window [class="ulauncher"] floating enable
+for_window [class="Ulauncher"] floating enable
 
 # reload the configuration file
 bindsym $mod+Shift+c reload

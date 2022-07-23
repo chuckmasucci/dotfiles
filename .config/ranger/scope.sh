@@ -11,7 +11,7 @@ IFS=$'\n'
 ## This script is considered a configuration file and must be updated manually.
 ## It will be left untouched if you upgrade ranger.
 
-## Because of some automated testing we do on the script #'s for comments need
+## Because of some  testing we do on the script #'s for comments need
 ## to be doubled up. Code that is commented out, because it's an alternative for
 ## example, gets only one #.
 
@@ -43,7 +43,7 @@ HIGHLIGHT_SIZE_MAX=262143  # 256KiB
 HIGHLIGHT_TABWIDTH=${HIGHLIGHT_TABWIDTH:-8}
 HIGHLIGHT_STYLE=${HIGHLIGHT_STYLE:-pablo}
 HIGHLIGHT_OPTIONS="--replace-tabs=${HIGHLIGHT_TABWIDTH} --style=${HIGHLIGHT_STYLE} ${HIGHLIGHT_OPTIONS:-}"
-PYGMENTIZE_STYLE=${PYGMENTIZE_STYLE:-autumn}
+PYGMENTIZE_STYLE=${PYGMENTIZE_STYLE:-dracula}
 OPENSCAD_IMGSIZE=${RNGR_OPENSCAD_IMGSIZE:-1000,1000}
 OPENSCAD_COLORSCHEME=${RNGR_OPENSCAD_COLORSCHEME:-Tomorrow Night}
 
