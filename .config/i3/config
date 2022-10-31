@@ -6,7 +6,7 @@ gaps inner 10
 gaps outer 0
 
 # focus
-focus_follows_mouse no
+focus_follows_mouse yes
 focus_on_window_activation focus
 
 # borders
@@ -86,7 +86,7 @@ bindsym $mod+Shift+$right move right
 bindsym $mod+Tab workspace back_and_forth
 
 # split in horizontal orientation
-# bindsym $mod+h split h
+bindsym $mod+Ctrl+h split h
 
 # split in vertical orientation
 bindsym $mod+v split v
@@ -125,10 +125,21 @@ bindsym Control+Shift+space exec --no-startup-id dunstctl close-all
 # bindsym Mod1+space exec ~/.config/rofi/current/launcher
 
 # Chrome tabs
-exec_always --no-startup-id ~/.local/bin/i3-chrome-tab-dragging.py
+# exec_always --no-startup-id ~/.local/bin/i3-chrome-tab-dragging.py
 
 # screenshot
-bindsym --release $mod+Shift+Print exec --no-startup-id "maim -s | tee /home/chuck/$(date '+%d-%m-%Y--%R:%S').png | xclip -t image/png -selection clipboard"
+# bindsym --release $mod+Shift+Print exec --no-startup-id "maim -s | tee /home/chuck/$(date '+%d-%m-%Y--%R:%S').png | xclip -t image/png -selection clipboard"
+# bindsym $mod+Shift+Print exec --no-startup-id maim --select | xclip -selection clipboard -t image/png
+## Screenshots
+bindsym Print exec --no-startup-id maim "/$HOME/Pictures/$(date).png"
+bindsym $mod+Print exec --no-startup-id maim --window $(xdotool getactivewindow) "/$HOME/Pictures/$(date).png"
+bindsym Shift+Print exec --no-startup-id maim --select "/$HOME/Pictures/$(date).png"
+
+## Clipboard Screenshots
+bindsym Ctrl+Print exec --no-startup-id maim | xclip -selection clipboard -t image/png
+bindsym Ctrl+$mod+Print exec --no-startup-id maim --window $(xdotool getactivewindow) | xclip -selection clipboard -t image/png
+bindsym Ctrl+Shift+Print exec --no-startup-id maim --select | xclip -selection clipboard -t image/png
+
 
 bindsym $mod+Shift+Return exec --no-startup-id kitty --class floating --hold -e glow ~/Documents/vimspector-cheat-sheet.md
 for_window [instance="floating"] floating enabled
@@ -187,8 +198,10 @@ for_window [class="Google-chrome" instance="crx_hpfldicfbfomlpcikngkocigghgafkph
 for_window [window_role="pop-up"] floating enable
 for_window [id=111149061 title="Android Emulator - Pixel_3_XL_API_30:5554"] floating enable
 for_window [class="awakened-poe-trade"] floating enable
+# for_window [class="awakened-poe-trade"] move absolute position center
 # for_window [class="ulauncher"] floating enable
 for_window [class="Ulauncher"] floating enable
+for_window [class="^.*"] border pixel 0
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
