@@ -1,0 +1,48 @@
+(defwidget bar []
+  (centerbox :orientation "h"
+    (workspaces)
+    (music)
+    (time)))
+
+(defwidget music []
+  (box :class "barwidget spotify"
+       :orientation "h"
+       :space-evenly false
+       :halign "center"
+    {""}))
+
+(defwidget time []
+  (box :class "barwidget"
+       :halign "end"
+       :orientation "h"
+       :visible true
+    time
+    ))
+
+(defwidget workspaces []
+  (box :class "barwidget workspaces"
+       :orientation "h"
+       :space-evenly true
+       :halign "start"
+       :spacing 20
+    (button :onclick "i3-msg workspace 1" "")
+    (button :onclick "i3-msg workspace 2" "")
+    (button :onclick "i3-msg workspace 3" "")
+    (button :onclick "i3-msg workspace 4" "")
+    (button :onclick "i3-msg workspace 5" "")
+    (button :onclick "i3-msg workspace 6" "")
+    (button :onclick "i3-msg workspace 7" "")
+    (button :onclick "i3-msg workspace 8" "")
+    (button :onclick "i3-msg workspace 9" "")))
+
+(defpoll time :interval "11s"
+  "date '+%d %b, %_I:%M %p'")
+
+(defwindow bar
+  :monitor 0
+  :geometry (geometry :x "0%"
+                      :y "0%"
+                      :anchor "top center")
+  :reserve (struts :side "top" :distance "4%")
+  :windowtype "dock"
+  (bar))
