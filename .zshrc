@@ -29,7 +29,7 @@ bindkey '\e[B' history-beginning-search-forward
 
 # Aliases
 alias lf="fc-list : family | sort | uniq"
-alias nvim="lvim"
+# alias nvim="lvim"
 alias sz="source ~/.zshrc"
 
 # Aliases - edit config files

@@ -32,16 +32,16 @@ client.background       #F8F8F2
 # startup apps
 exec --no-startup-id barrier
 exec --no-startup-id dex --autostart --environment i3
+exec --no-startup-id ewwlaunch
 exec --no-startup-id nm-applet
-exec --no-startup-id picom --experimental-backends
+exec --no-startup-id picom
 exec --no-startup-id redshift
-exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
-exec --no-startup-id ~/.local/bin/ewwlaunch
 exec --no-startup-id udiskie --tray
+exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 exec_always --no-startup-id hsetroot -solid "#444444"
-exec_always --no-startup-id update-wallpaper
 exec_always --no-startup-id kitti3 -p TC -s 0.5 0.3
 exec_always --no-startup-id ulauncher
+exec_always --no-startup-id update-wallpaper
 bindsym $mod+n nop kitti3
 
 # Use pactl to adjust volume in PulseAudio.
