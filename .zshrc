@@ -4,9 +4,10 @@ export DESKTOP_SESSION="i3"
 export EDITOR='nvim'
 export LANG=en_US.UTF-8
 export MANPATH="/usr/local/man:$MANPATH"
-export ZSH_TMUX_CONFIG="$HOME/.tmux.conf.local"
+export TERMINAL="kitty"
 export XDG_DATA_HOME="$HOME/.local/share"
 export ZSH="$HOME/.oh-my-zsh"
+export ZSH_TMUX_CONFIG="$HOME/.tmux.conf.local"
 
 # Path
 path+=('/home/chuck/.local/bin')
