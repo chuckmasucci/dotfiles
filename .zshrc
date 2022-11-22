@@ -1,7 +1,7 @@
 # Enviornmental variables
 export ARCHFLAGS="-arch x86_64"
 export DESKTOP_SESSION="i3"
-export EDITOR='nvim'
+export EDITOR='lvim'
 export LANG=en_US.UTF-8
 export MANPATH="/usr/local/man:$MANPATH"
 export TERMINAL="kitty"
@@ -34,6 +34,7 @@ alias lf="fc-list : family | sort | uniq"
 alias sz="source ~/.zshrc"
 
 # Aliases - edit config files
+alias addaur="$EDITOR ~/.local/src/arch-install/init.sh"
 alias i3config="$EDITOR ~/.config/i3/config"
 alias kittyconfig="$EDITOR ~/.config/kitty/kitty.conf"
 alias nvimconfig="cd ~/.config/lvim/ && $EDITOR config.lua"
