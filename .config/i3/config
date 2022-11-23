@@ -120,6 +120,11 @@ bindsym $mod+minus scratchpad show
 # dunst
 bindsym Control+Shift+space exec --no-startup-id dunstctl close-all
 
+# open messages
+bindsym F1 [class="Google-chrome" instance="crx_hpfldicfbfomlpcikngkocigghgafkph"] scratchpad show
+# bindsym $mod+Shift+m [title="Messages"] scratchpad show
+# bindsym $mod+Shift+m exec --no-startup-id /opt/google/chrome/google-chrome "--profile-directory=Profile 1" --app-id=hpfldicfbfomlpcikngkocigghgafkph
+
 # rofi
 # bindsym $mod+grave exec "rofi -show drun -show-icons
 # bindsym Mod1+space exec ~/.config/rofi/current/launcher
