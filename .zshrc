@@ -14,7 +14,7 @@ path+=('/home/chuck/.local/bin')
 path+=('/usr/lib/w3m')
 
 # Plugins
-plugins=(git vi-mode colorize cp tmux fzf)
+plugins=(git vi-mode colorize cp fzf)
 
 # Theme
 ZSH_THEME="robbyrussell"
@@ -42,6 +42,10 @@ alias picomconfig="$EDITOR ~/.config/picom/picom.conf"
 alias tmuxconfig="$EDITOR ~/.tmux.conf.local"
 alias zshconfig="$EDITOR ~/.zshrc"
 
+# i3 Aliases
+alias i3marks="i3-msg -t get_marks"
+
+
 # Vi mode
 function zle-keymap-select zle-line-init zle-line-finish {
   case $KEYMAP in
@@ -54,6 +58,7 @@ zle -N zle-line-init
 zle -N zle-line-finish
 zle -N zle-keymap-select
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# fnm
+export PATH="/home/chuck/.local/share/fnm:$PATH"
+eval "`fnm env`"
+eval "`fnm env`"

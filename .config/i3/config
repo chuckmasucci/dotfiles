@@ -1,5 +1,6 @@
 # set the mod key
 set $mod Mod4
+set $alt Mod1
 
 # gaps
 gaps inner 10
@@ -121,20 +122,10 @@ bindsym $mod+minus scratchpad show
 bindsym Control+Shift+space exec --no-startup-id dunstctl close-all
 
 # open messages
-bindsym F1 [class="Google-chrome" instance="crx_hpfldicfbfomlpcikngkocigghgafkph"] scratchpad show
-# bindsym $mod+Shift+m [title="Messages"] scratchpad show
-# bindsym $mod+Shift+m exec --no-startup-id /opt/google/chrome/google-chrome "--profile-directory=Profile 1" --app-id=hpfldicfbfomlpcikngkocigghgafkph
+bindsym $mod+F9 exec i3_scratchpad_show_or_create.sh 'google-messages' '/opt/google/chrome/google-chrome "--profile-directory=Profile 1" --app-id=hpfldicfbfomlpcikngkocigghgafkph'
+bindsym $mod+F10 exec i3_scratchpad_show_or_create.sh 'google-chat' '/opt/google/chrome/google-chrome "--profile-directory=Profile 1" --app-id=mdpkiolbdkhdjpekfbkbmhigcaggjagi'
 
-# rofi
-# bindsym $mod+grave exec "rofi -show drun -show-icons
-# bindsym Mod1+space exec ~/.config/rofi/current/launcher
 
-# Chrome tabs
-# exec_always --no-startup-id ~/.local/bin/i3-chrome-tab-dragging.py
-
-# screenshot
-# bindsym --release $mod+Shift+Print exec --no-startup-id "maim -s | tee /home/chuck/$(date '+%d-%m-%Y--%R:%S').png | xclip -t image/png -selection clipboard"
-# bindsym $mod+Shift+Print exec --no-startup-id maim --select | xclip -selection clipboard -t image/png
 ## Screenshots
 bindsym Print exec --no-startup-id maim "/$HOME/Pictures/$(date).png"
 bindsym $mod+Print exec --no-startup-id maim --window $(xdotool getactivewindow) "/$HOME/Pictures/$(date).png"
@@ -150,6 +141,17 @@ bindsym $mod+Shift+Return exec --no-startup-id kitty --class floating --hold -e 
 for_window [instance="floating"] floating enabled
 for_window [instance="floating"] move position 2000 0
 for_window [instance="floating"] resize set 1920 1080
+
+workspace 1 output DP-0.8
+workspace 2 output HDMI-0
+workspace 3 output DP-0.8
+workspace 4 output HDMI-0
+workspace 5 output DP-0.8
+workspace 6 output HDMI-0
+workspace 7 output DP-0.8
+workspace 8 output HDMI-0
+workspace 9 output DP-0.8
+workspace 0 output HDMI-0
 
 
 # Define names for default workspaces for which we configure key bindings later on.
@@ -190,23 +192,21 @@ bindsym $mod+Shift+9 move container to workspace number $ws9
 bindsym $mod+Shift+0 move container to workspace number $ws10
 
 # floating windows
+for_window [class="^.*"] border pixel 0
 for_window [window_type="notification"] floating enable
-for_window [class="Shutter" instance="shutter"] floating enable
-for_window [class="vlc" instance="vlc"] floating enable
+for_window [window_role="pop-up"] floating enable
 for_window [class="feh" instance="feh"] floating enable
 for_window [class="mpv"] floating enable
+for_window [class="vlc" instance="vlc"] floating enable
 for_window [class="Cawbird"] floating enable
-for_window [class="Steam" title="Steam - News.*"] floating enable
-for_window [class="Steam" title="Friends List"] floating enable
 for_window [class="Google-chrome" instance="crx_nckgahadagoaajjgafhacjanaoiihapd"] floating enable
 for_window [class="Google-chrome" instance="crx_hpfldicfbfomlpcikngkocigghgafkph"] border pixel 0
-for_window [window_role="pop-up"] floating enable
-for_window [id=111149061 title="Android Emulator - Pixel_3_XL_API_30:5554"] floating enable
-for_window [class="awakened-poe-trade"] floating enable
-# for_window [class="awakened-poe-trade"] move absolute position center
-# for_window [class="ulauncher"] floating enable
+for_window [class="Google-chrome" instance="hpfldicfbfomlpcikngkocigghgafkph"] move position center
+for_window [class="Google-chrome" instance="mdpkiolbdkhdjpekfbkbmhigcaggjagi"] move position center
+for_window [class="Shutter" instance="shutter"] floating enable
+for_window [class="Steam" title="Friends List"] floating enable
+for_window [class="Steam" title="Steam - News.*"] floating enable
 for_window [class="Ulauncher"] floating enable
-for_window [class="^.*"] border pixel 0
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
