@@ -124,6 +124,7 @@ bindsym Control+Shift+space exec --no-startup-id dunstctl close-all
 # open messages
 bindsym $mod+F9 exec i3_scratchpad_show_or_create.sh 'google-messages' '/opt/google/chrome/google-chrome "--profile-directory=Profile 1" --app-id=hpfldicfbfomlpcikngkocigghgafkph'
 bindsym $mod+F10 exec i3_scratchpad_show_or_create.sh 'google-chat' '/opt/google/chrome/google-chrome "--profile-directory=Profile 1" --app-id=mdpkiolbdkhdjpekfbkbmhigcaggjagi'
+# bindsym $mod+F11 exec i3_scratchpad_show_or_create.sh 'scratch-terminl' 'kitty'
 
 
 ## Screenshots
@@ -137,21 +138,22 @@ bindsym Ctrl+$mod+Print exec --no-startup-id maim --window $(xdotool getactivewi
 bindsym Ctrl+Shift+Print exec --no-startup-id maim --select | xclip -selection clipboard -t image/png
 
 
-bindsym $mod+Shift+Return exec --no-startup-id kitty --class floating --hold -e glow ~/Documents/vimspector-cheat-sheet.md
+bindsym $mod+Shift+Return exec --no-startup-id kitty --class floating --hold -e lvim ~/Documents/vimspector-cheat-sheet.md
 for_window [instance="floating"] floating enabled
 for_window [instance="floating"] move position 2000 0
 for_window [instance="floating"] resize set 1920 1080
 
+# Workspace outputs
 workspace 1 output DP-0.8
-workspace 2 output HDMI-0
+workspace 2 output DP-0.8
 workspace 3 output DP-0.8
-workspace 4 output HDMI-0
+workspace 4 output DP-0.8
 workspace 5 output DP-0.8
 workspace 6 output HDMI-0
-workspace 7 output DP-0.8
+workspace 7 output HDMI-0
 workspace 8 output HDMI-0
-workspace 9 output DP-0.8
-workspace 0 output HDMI-0
+workspace 9 output HDMI-0
+workspace 10 output HDMI-0
 
 
 # Define names for default workspaces for which we configure key bindings later on.
@@ -167,7 +169,7 @@ set $ws8 "8"
 set $ws9 "9"
 set $ws10 "10"
 
-# switch to workspace
+# Switch to workspace
 bindsym $mod+1 workspace number $ws1
 bindsym $mod+2 workspace number $ws2
 bindsym $mod+3 workspace number $ws3
@@ -179,7 +181,7 @@ bindsym $mod+8 workspace number $ws8
 bindsym $mod+9 workspace number $ws9
 bindsym $mod+0 workspace number $ws10
 
-# move focused container to workspace
+# Move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace number $ws1
 bindsym $mod+Shift+2 move container to workspace number $ws2
 bindsym $mod+Shift+3 move container to workspace number $ws3
@@ -191,8 +193,13 @@ bindsym $mod+Shift+8 move container to workspace number $ws8
 bindsym $mod+Shift+9 move container to workspace number $ws9
 bindsym $mod+Shift+0 move container to workspace number $ws10
 
-# floating windows
+# Windows
 for_window [class="^.*"] border pixel 0
+for_window [class="Google-chrome" instance="crx_hpfldicfbfomlpcikngkocigghgafkph"] border pixel 0
+for_window [class="Google-chrome" instance="hpfldicfbfomlpcikngkocigghgafkph"] move position center
+for_window [class="Google-chrome" instance="mdpkiolbdkhdjpekfbkbmhigcaggjagi"] move position center
+
+# floating windows
 for_window [window_type="notification"] floating enable
 for_window [window_role="pop-up"] floating enable
 for_window [class="feh" instance="feh"] floating enable
@@ -200,9 +207,6 @@ for_window [class="mpv"] floating enable
 for_window [class="vlc" instance="vlc"] floating enable
 for_window [class="Cawbird"] floating enable
 for_window [class="Google-chrome" instance="crx_nckgahadagoaajjgafhacjanaoiihapd"] floating enable
-for_window [class="Google-chrome" instance="crx_hpfldicfbfomlpcikngkocigghgafkph"] border pixel 0
-for_window [class="Google-chrome" instance="hpfldicfbfomlpcikngkocigghgafkph"] move position center
-for_window [class="Google-chrome" instance="mdpkiolbdkhdjpekfbkbmhigcaggjagi"] move position center
 for_window [class="Shutter" instance="shutter"] floating enable
 for_window [class="Steam" title="Friends List"] floating enable
 for_window [class="Steam" title="Steam - News.*"] floating enable
