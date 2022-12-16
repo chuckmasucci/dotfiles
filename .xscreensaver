@@ -1,11 +1,11 @@
 # XScreenSaver Preferences File
-# Written by xscreensaver-settings 6.05 for chuck on Thu Dec  1 09:18:20 2022.
+# Written by xscreensaver-settings 6.05 for chuck on Tue Dec 13 08:28:24 2022.
 # https://www.jwz.org/xscreensaver/
 
 timeout:	0:03:00
-cycle:		0:10:00
-lock:		True
-lockTimeout:	0:15:00
+cycle:		0:02:00
+lock:		False
+lockTimeout:	0:05:00
 passwdTimeout:	0:00:30
 visualID:	default
 installColormap:    True
@@ -20,24 +20,24 @@ fadeSeconds:	0:00:03
 ignoreUninstalledPrograms:False
 dpmsEnabled:	True
 dpmsQuickOff:	False
-dpmsStandby:	2:00:00
-dpmsSuspend:	2:00:00
-dpmsOff:	4:00:00
-grabDesktopImages:  True
+dpmsStandby:	0:10:00
+dpmsSuspend:	0:20:00
+dpmsOff:	0:25:00
+grabDesktopImages:  False
 grabVideoFrames:    False
 chooseRandomImages: False
 imageDirectory:	
 
-mode:		random
-selected:	-1
+mode:		one
+selected:	247
 
-textMode:	url
+textMode:	literal
 textLiteral:	XScreenSaver
 textFile:	
 textProgram:	fortune
 textURL:	https://en.wikipedia.org/w/index.php?title=Special:NewPages&feed=rss
 dialogTheme:	default
-settingsGeom:	7728,16 -1,-1
+settingsGeom:	5959,610 -1,-1
 
 programs:								      \
 				maze --root				    \n\

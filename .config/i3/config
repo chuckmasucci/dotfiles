@@ -37,6 +37,7 @@ exec --no-startup-id ewwlaunch
 exec --no-startup-id nm-applet
 exec --no-startup-id picom
 exec --no-startup-id redshift
+exec --no-startup-id xscreensaver
 exec --no-startup-id udiskie --tray
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 exec_always --no-startup-id hsetroot -solid "#444444"
@@ -121,10 +122,10 @@ bindsym $mod+minus scratchpad show
 # dunst
 bindsym Control+Shift+space exec --no-startup-id dunstctl close-all
 
-# open messages
+# open modal windows
 bindsym $mod+F9 exec i3_scratchpad_show_or_create.sh 'google-messages' '/opt/google/chrome/google-chrome "--profile-directory=Profile 1" --app-id=hpfldicfbfomlpcikngkocigghgafkph'
 bindsym $mod+F10 exec i3_scratchpad_show_or_create.sh 'google-chat' '/opt/google/chrome/google-chrome "--profile-directory=Profile 1" --app-id=mdpkiolbdkhdjpekfbkbmhigcaggjagi'
-# bindsym $mod+F11 exec i3_scratchpad_show_or_create.sh 'scratch-terminl' 'kitty'
+bindsym $mod+F11 exec i3_scratchpad_show_or_create.sh 'popup-terminal' 'kitty'
 
 
 ## Screenshots

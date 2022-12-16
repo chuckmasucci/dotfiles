@@ -41,6 +41,7 @@ alias nvimconfig="cd ~/.config/lvim/ && $EDITOR config.lua"
 alias picomconfig="$EDITOR ~/.config/picom/picom.conf"
 alias tmuxconfig="$EDITOR ~/.tmux.conf.local"
 alias zshconfig="$EDITOR ~/.zshrc"
+alias ycc="yay -Sc"
 
 # i3 Aliases
 alias i3marks="i3-msg -t get_marks"
