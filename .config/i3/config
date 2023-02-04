@@ -9,9 +9,10 @@ gaps outer 0
 # focus
 focus_follows_mouse yes
 focus_on_window_activation focus
+# mouse_warping none
 
 # borders
-default_border pixel 0
+default_border pixel 2
 
 # font
 font pango:ProFontIIx 10
@@ -38,12 +39,13 @@ exec --no-startup-id nm-applet
 exec --no-startup-id picom
 exec --no-startup-id redshift
 exec --no-startup-id xscreensaver
-exec --no-startup-id udiskie --tray
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
-exec_always --no-startup-id hsetroot -solid "#444444"
-exec_always --no-startup-id kitti3 -p TC -s 0.5 0.3
+exec --no-startup-id udiskie --tray
+exec --no-startup-id unclutter
+exec_always --no-startup-id hsetroot -solid "#282a36"
 exec_always --no-startup-id ulauncher
 exec_always --no-startup-id update-wallpaper
+# exec_always --no-startup-id xborders -c ~/.config/xborder/config.json
 bindsym $mod+n nop kitti3
 
 # Use pactl to adjust volume in PulseAudio.
@@ -121,10 +123,12 @@ bindsym $mod+minus scratchpad show
 
 # dunst
 bindsym Control+Shift+space exec --no-startup-id dunstctl close-all
+bindsym Control+Shift+period exec --no-startup-id dunstctl context
 
 # open modal windows
-bindsym $mod+F9 exec i3_scratchpad_show_or_create.sh 'google-messages' '/opt/google/chrome/google-chrome "--profile-directory=Profile 1" --app-id=hpfldicfbfomlpcikngkocigghgafkph'
-bindsym $mod+F10 exec i3_scratchpad_show_or_create.sh 'google-chat' '/opt/google/chrome/google-chrome "--profile-directory=Profile 1" --app-id=mdpkiolbdkhdjpekfbkbmhigcaggjagi'
+# bindsym $mod+F9 exec i3_scratchpad_show_or_create.sh 'google-messages' '/opt/google/chrome/google-chrome "--profile-directory=Profile 1" --app-id=hpfldicfbfomlpcikngkocigghgafkph'
+bindsym $mod+F9 exec i3_scratchpad_show_or_create.sh 'google-messages' '/opt/Android\ Messages/AndroidMessages'
+bindsym $mod+F10 exec i3_scratchpad_show_or_create.sh 'google-chat' '/opt/google-chat-linux/google-chat-linux'
 bindsym $mod+F11 exec i3_scratchpad_show_or_create.sh 'popup-terminal' 'kitty'
 
 
@@ -138,11 +142,16 @@ bindsym Ctrl+Print exec --no-startup-id maim | xclip -selection clipboard -t ima
 bindsym Ctrl+$mod+Print exec --no-startup-id maim --window $(xdotool getactivewindow) | xclip -selection clipboard -t image/png
 bindsym Ctrl+Shift+Print exec --no-startup-id maim --select | xclip -selection clipboard -t image/png
 
+## Change resolutions
+# bindsym $mod+Shift+v exec --no-startup-id xrandr --dpi 110 --output DP-0.8 --mode 3440x1440 --panning 3440x1440 --scale 1.0x1.0 --output HDMI-0 --mode 3840x2160 --pos 3440x0
+# bindsym $mod+Shift+g exec --no-startup-id xrandr --dpi 162 --output DP-0.8 --mode 3440x1440 --panning 5160x2160 --scale 1.5x1.5 --output HDMI-0 --mode 3840x2160 --pos 5160x0
+
+
 
 bindsym $mod+Shift+Return exec --no-startup-id kitty --class floating --hold -e lvim ~/Documents/vimspector-cheat-sheet.md
-for_window [instance="floating"] floating enabled
-for_window [instance="floating"] move position 2000 0
-for_window [instance="floating"] resize set 1920 1080
+# for_window [instance="floating"] floating enabled
+# for_window [instance="floating"] move position 2000 0
+# for_window [instance="floating"] resize set 1920 1080
 
 # Workspace outputs
 workspace 1 output DP-0.8
@@ -195,7 +204,7 @@ bindsym $mod+Shift+9 move container to workspace number $ws9
 bindsym $mod+Shift+0 move container to workspace number $ws10
 
 # Windows
-for_window [class="^.*"] border pixel 0
+# for_window [class="^.*"] border pixel 0
 for_window [class="Google-chrome" instance="crx_hpfldicfbfomlpcikngkocigghgafkph"] border pixel 0
 for_window [class="Google-chrome" instance="hpfldicfbfomlpcikngkocigghgafkph"] move position center
 for_window [class="Google-chrome" instance="mdpkiolbdkhdjpekfbkbmhigcaggjagi"] move position center
@@ -205,13 +214,27 @@ for_window [window_type="notification"] floating enable
 for_window [window_role="pop-up"] floating enable
 for_window [class="feh" instance="feh"] floating enable
 for_window [class="mpv"] floating enable
-for_window [class="vlc" instance="vlc"] floating enable
-for_window [class="Cawbird"] floating enable
+
+# for_window [class="kitty"] floating enable
+# for_window [class="kitty"] resize set 1920 1080
+# for_window [class="kitty"] move position center
+
 for_window [class="Google-chrome" instance="crx_nckgahadagoaajjgafhacjanaoiihapd"] floating enable
 for_window [class="Shutter" instance="shutter"] floating enable
 for_window [class="Steam" title="Friends List"] floating enable
 for_window [class="Steam" title="Steam - News.*"] floating enable
-for_window [class="Ulauncher"] floating enable
+for_window [class="ulauncher"] floating enable
+
+# for_window [class="android-messages-desktop"] floating enable
+# for_window [class="android-messages-desktop"] resize set 1920 1080
+# for_window [class="android-messages-desktop"] move position center
+
+# for_window [class="google-chat-linux"] floating enable move position center
+# for_window [class="google-chat-linux"] resize set 1920 1080
+# for_window [class="google-chat-linux"] move position center
+
+# for_window [con_mark="popup-terminal"] resize set 1920 1080, move position top
+# for_window [con_mark="popup-terminal"] move position top
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -238,12 +261,16 @@ bindsym $mod+r mode "resize"
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-  status_command i3status
+  position bottom
+  separator_symbol " | "
+  status_command /home/chuck/.local/bin/i3script.sh
+  tray_output primary
+  workspace_buttons yes
 
   colors {
-    background #000000
+    background #282a36
     statusline #F8F8F2
-    separator  #44475A
+    separator  #6272a4
 
     focused_workspace  #44475A #44475A #F8F8F2
     active_workspace   #282A36 #44475A #F8F8F2

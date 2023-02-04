@@ -1,33 +1,48 @@
 * {
   all: unset; //Unsets everything so you can style everything from scratch
-  font-family: "Arimo";
+  font-family: "Arimo Nerd Font";
 }
+
+$background: #282a36;
+$comment: #6272a4;
+$cyan: #8be9fd;
+$current-line: #44475a;
+$foreground: #f8f8f2;
+$white: #ffffff;
+$black: #000000;
 
 //Global Styles
 .bar {
-  // color: #b0b4bc;
-  // margin: 10px;
-  // padding: 10px;
-  // border-radius: 16px;
+  /* background: $background; */
+  /* background: $current-line; */
+  color: $white;
+}
+
+.bar-container {
+  padding: 5px 15px;
+  font-size: 18px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
 }
 
 .barwidget {
-  background-color: #17181e;
+  // background: $current-line;
+  // background-color: #17181e;
   //background-color: #000;
-  border-radius: 0 0 15px 15px;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
-  font-size: 23px;
-  font-weight: bold;
-  margin: 0px 10px 10px 20px;
-  padding: 0px 20px;
-  border-bottom: 4px solid #44475a;
-  border-right: 4px solid #44475a;
+  // border-radius: 0 0 15px 15px;
+  // box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+  /* font-size: 20px; */
+  // font-weight: bold;
+  // margin: 10px 0 0;
+  // margin: 10px;
+  // padding: 0px 20px;
+  // border-bottom: 4px solid #44475a;
+  // border-right: 4px solid #44475a;
 }
 
-.spotify {
-  font-size: 30px;
-}
+/* .spotify { */
+/*   font-size: 30px; */
+/* } */
 
-.workspaces {
-  font-size: 40px;
-}
+/* .workspaces { */
+/*   font-size: 40px; */
+/* } */

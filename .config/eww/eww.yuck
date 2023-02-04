@@ -1,7 +1,10 @@
+(defvar current-layout "us")
+
+
 (defwidget bar []
-  (centerbox :orientation "h"
+  (centerbox :class "bar-container" :orientation "h"
     (workspaces)
-    (music)
+    (keyboardlayout)
     (time)))
 
 (defwidget music []
@@ -15,8 +18,15 @@
   (box :class "barwidget"
        :halign "end"
        :orientation "h"
-       :visible true
     time
+    (button :onclick "notify-send 'Hello' 'Hello, you'"
+      "Greet")
+    ))
+
+(defwidget keyboardlayout []
+  (box :class "bardwidget"
+       :halign "end"
+    kblayout
     ))
 
 (defwidget workspaces []
@@ -36,13 +46,19 @@
     (button :onclick "i3-msg workspace 9" "")))
 
 (defpoll time :interval "11s"
-  "date '+%d %b, %_I:%M %p'")
+  "date '+%_I:%M %p'")
+
+(defpoll kblayout :interval "1s"
+  "xkblayout-state print '%s'")
 
 (defwindow bar
   :monitor 0
-  :geometry (geometry :x "0%"
-                      :y "0%"
+  :geometry (geometry :x "0"
+                      :y "0"
+                      :width "100%"
                       :anchor "top center")
   :reserve (struts :side "top" :distance "4%")
+  :stacking "fg"
   :windowtype "dock"
+  :wm-ignore false
   (bar))

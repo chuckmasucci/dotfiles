@@ -16,11 +16,33 @@ general {
   output_format = "i3bar"
 }
 
+order += "disk /home"
+# order += "ethernet enp5s0"
+order += "memory"
 order += "volume master"
+order += "tztime local"
+
+disk "/home" {
+  format = "💾 %used / %total  "
+}
+
+ethernet enp5s0 {
+  format_up = "☎️  %ip (%speed)"
+}
+
+memory {
+  format = "🐏 %used / %total  "
+  format_degraded = "🐏 %used / %total  "
+  threshold_degraded = "10%"
+}
+
+tztime local {
+  format = "⏰ %l:%M %p     "
+}
 
 volume master {
 	device = "default"
 	mixer = "Master"
 	mixer_idx = 0
-	format = " %volume "
+	format = "🔊 %volume  "
 }

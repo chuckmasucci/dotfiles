@@ -1,8 +1,8 @@
 # XScreenSaver Preferences File
-# Written by xscreensaver-settings 6.05 for chuck on Tue Dec 13 08:28:24 2022.
+# Written by xscreensaver-settings 6.06 for chuck on Tue Jan 31 20:16:27 2023.
 # https://www.jwz.org/xscreensaver/
 
-timeout:	0:03:00
+timeout:	0:11:00
 cycle:		0:02:00
 lock:		False
 lockTimeout:	0:05:00
@@ -18,9 +18,9 @@ fade:		True
 unfade:		True
 fadeSeconds:	0:00:03
 ignoreUninstalledPrograms:False
-dpmsEnabled:	True
+dpmsEnabled:	False
 dpmsQuickOff:	False
-dpmsStandby:	0:10:00
+dpmsStandby:	0:11:00
 dpmsSuspend:	0:20:00
 dpmsOff:	0:25:00
 grabDesktopImages:  False
@@ -29,7 +29,7 @@ chooseRandomImages: False
 imageDirectory:	
 
 mode:		one
-selected:	247
+selected:	91
 
 textMode:	literal
 textLiteral:	XScreenSaver
@@ -37,7 +37,7 @@ textFile:
 textProgram:	fortune
 textURL:	https://en.wikipedia.org/w/index.php?title=Special:NewPages&feed=rss
 dialogTheme:	default
-settingsGeom:	5959,610 -1,-1
+settingsGeom:	13,13 -1,-1
 
 programs:								      \
 				maze --root				    \n\
@@ -288,6 +288,7 @@ programs:								      \
   GL: 				mapscroller --root			    \n\
   GL: 				nakagin --root				    \n\
   GL: 				squirtorus --root			    \n\
+  GL: 				hextrail --root				    \n\
 
 
 pointerHysteresis:  10

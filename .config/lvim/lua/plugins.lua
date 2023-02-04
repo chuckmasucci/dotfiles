@@ -2,7 +2,11 @@ local M = {}
 M.config = function()
   lvim.plugins = {
     { "Mofiqul/dracula.nvim" },
+    { "simrat39/symbols-outline.nvim" },
     { "farmergreg/vim-lastplace" },
+    { "vimwiki/vimwiki" },
+    { "epwalsh/obsidian.nvim" },
+    { "elkowar/yuck.vim" },
     {
       'alexghergh/nvim-tmux-navigation',
       config = function()
@@ -64,5 +68,11 @@ M.config = function()
 end
 
 require("leap").set_default_keymaps()
-
+require("symbols-outline").setup()
+require("obsidian").setup({
+  dir = "~/Documents/Notes/",
+  completion = {
+    nvim_cmp = true, -- if using nvim-cmp, otherwise set to false
+  }
+})
 return M
