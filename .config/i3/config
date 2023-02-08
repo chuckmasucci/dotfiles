@@ -3,8 +3,8 @@ set $mod Mod4
 set $alt Mod1
 
 # gaps
-gaps inner 10
-gaps outer 0
+gaps inner 4
+gaps outer 4
 
 # focus
 focus_follows_mouse yes

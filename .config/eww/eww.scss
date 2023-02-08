@@ -11,38 +11,34 @@ $foreground: #f8f8f2;
 $white: #ffffff;
 $black: #000000;
 
-//Global Styles
 .bar {
-  /* background: $background; */
-  /* background: $current-line; */
+  background: rgba(0, 0, 0, 0.5);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
   color: $white;
 }
 
 .bar-container {
-  padding: 5px 15px;
+  padding: 10px 15px;
   font-size: 18px;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
 }
 
-.barwidget {
-  // background: $current-line;
-  // background-color: #17181e;
-  //background-color: #000;
-  // border-radius: 0 0 15px 15px;
-  // box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
-  /* font-size: 20px; */
-  // font-weight: bold;
-  // margin: 10px 0 0;
-  // margin: 10px;
-  // padding: 0px 20px;
-  // border-bottom: 4px solid #44475a;
-  // border-right: 4px solid #44475a;
+.datetime {
+  font-size: 15px;
 }
 
-/* .spotify { */
-/*   font-size: 30px; */
-/* } */
+.ws-icon {
+	background-size: 40px;
+	min-height: 40px;
+	min-width: 40px;
+  background-repeat: no-repeat;
+	/* margin: 8px 8px 0px 8px; */
+}
 
-/* .workspaces { */
-/*   font-size: 40px; */
-/* } */
+.workspaces {
+}
+
+.barwidget {
+  /* background: red; */
+}
+

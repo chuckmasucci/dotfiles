@@ -3,9 +3,9 @@
 
 (defwidget bar []
   (centerbox :class "bar-container" :orientation "h"
+    ""
     (workspaces)
-    (keyboardlayout)
-    (time)))
+    (datetime)))
 
 (defwidget music []
   (box :class "barwidget spotify"
@@ -14,20 +14,34 @@
        :halign "center"
     {""}))
 
-(defwidget time []
-  (box :class "barwidget"
+(defwidget datetime []
+  (box :class "barwidget datetime"
        :halign "end"
        :orientation "h"
-    time
-    (button :onclick "notify-send 'Hello' 'Hello, you'"
-      "Greet")
-    ))
+      (box :orientation "v"
+        (time)
+        (date))
+      ))
 
-(defwidget keyboardlayout []
-  (box :class "bardwidget"
+(defwidget date []
+  (box :class "barwidget date"
        :halign "end"
-    kblayout
-    ))
+       :orientation "h"
+    datepoll))
+
+(defwidget time []
+  (box :class "barwidget time"
+       :halign "end"
+       :orientation "h"
+    timepoll))
+    ; (button :onclick "notify-send 'Hello' 'Hello, you'"
+    ;   "Greet")
+
+; (defwidget keyboardlayout []
+;   (box :class "bardwidget"
+;        :halign "end"
+;     kblayout
+;     ))
 
 (defwidget workspaces []
   (box :class "barwidget workspaces"
@@ -35,21 +49,32 @@
        :space-evenly true
        :halign "start"
        :spacing 20
-    (button :onclick "i3-msg workspace 1" "")
-    (button :onclick "i3-msg workspace 2" "")
-    (button :onclick "i3-msg workspace 3" "")
-    (button :onclick "i3-msg workspace 4" "")
-    (button :onclick "i3-msg workspace 5" "")
-    (button :onclick "i3-msg workspace 6" "")
-    (button :onclick "i3-msg workspace 7" "")
-    (button :onclick "i3-msg workspace 8" "")
-    (button :onclick "i3-msg workspace 9" "")))
+    (button :class "ws-icon" :style "background-image: url('icons/term.svg');" :onclick "i3-msg workspace 1")
+    (button :class "ws-icon" :style "background-image: url('icons/term.svg');" :onclick "i3-msg workspace 2")
+    (button :class "ws-icon" :style "background-image: url('icons/term.svg');" :onclick "i3-msg workspace 3")
+    (button :class "ws-icon" :style "background-image: url('icons/term.svg');" :onclick "i3-msg workspace 4")
+    (button :class "ws-icon" :style "background-image: url('icons/term.png');" :onclick "i3-msg workspace 5")
+    ; (button :class "ws-icon" :style "background-image: url('icons/term.png');" :onclick "i3-msg workspace 6")
+    ; (button :class "ws-icon" :style "background-image: url('icons/term.png');" :onclick "i3-msg workspace 7")
+    ; (button :class "ws-icon" :style "background-image: url('icons/term.png');" :onclick "i3-msg workspace 8")
+    ; (button :class "ws-icon" :style "background-image: url('icons/term.png');" :onclick "i3-msg workspace 9")
+    ; (button :onclick "i3-msg workspace 3" "")
+    ; (button :onclick "i3-msg workspace 4" "")
+    ; (button :onclick "i3-msg workspace 5" "")
+    ; (button :onclick "i3-msg workspace 6" "")
+    ; (button :onclick "i3-msg workspace 7" "")
+    ; (button :onclick "i3-msg workspace 8" "")
+    ; (button :onclick "i3-msg workspace 9" "")
+    ))
 
-(defpoll time :interval "11s"
+(defpoll timepoll :interval "11s"
   "date '+%_I:%M %p'")
 
-(defpoll kblayout :interval "1s"
-  "xkblayout-state print '%s'")
+(defpoll datepoll :interval "11s"
+  "date '+%b %d, %Y'")
+
+; (defpoll kblayout :interval "1s"
+;   "xkblayout-state print '%s'")
 
 (defwindow bar
   :monitor 0
