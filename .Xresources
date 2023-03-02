@@ -1,7 +1,6 @@
 ! DPI
 Xft.dpi: 124
-
-Xcursor.theme: BreezeX-Dark
+Xcursor.size: 32
 
 ! Dracula Xresources palette
 *.foreground: #F8F8F2

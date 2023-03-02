@@ -4,6 +4,7 @@ export DESKTOP_SESSION="i3"
 export EDITOR='lvim'
 export LANG=en_US.UTF-8
 export MANPATH="/usr/local/man:$MANPATH"
+export TERM="kitty"
 export TERMINAL="kitty"
 export XDG_DATA_HOME="$HOME/.local/share"
 export ZSH="$HOME/.oh-my-zsh"
