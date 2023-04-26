@@ -3,8 +3,13 @@ set $mod Mod4
 set $alt Mod1
 
 # gaps
-gaps inner 4
-gaps outer 4
+# gaps inner 4
+# gaps outer 4
+
+for_window [all] gaps inner all set 10
+for_window [all] padding 3px
+for_window [all] title_window_icon yes
+for_window [all] title_window_icon padding 5px
 
 # focus
 focus_follows_mouse yes
@@ -12,7 +17,8 @@ focus_on_window_activation focus
 # mouse_warping none
 
 # borders
-default_border pixel 2
+# default_border pixel 2
+for_window [all] border normal 1
 
 # font
 font pango:Liberation Sans 10
@@ -23,7 +29,7 @@ hide_edge_borders none
 # colors
 
 # class                 border  bground text    indicator child_border
-client.focused          #6272A4 #6272A4 #F8F8F2 #6272A4   #6272A4
+client.focused          #5c4cad #5c4cad #F8F8F2 #6272A4   #5c4cad
 client.focused_inactive #44475A #44475A #F8F8F2 #44475A   #44475A
 client.unfocused        #282A36 #282A36 #BFBFBF #282A36   #282A36
 client.urgent           #44475A #FF5555 #F8F8F2 #FF5555   #FF5555
@@ -212,8 +218,21 @@ for_window [class="Google-chrome" instance="hpfldicfbfomlpcikngkocigghgafkph"] m
 for_window [class="Google-chrome" instance="mdpkiolbdkhdjpekfbkbmhigcaggjagi"] move position center
 
 # floating windows
+for_window [window_role="About"] floating enable
+for_window [window_role="Organizer"] floating enable
+for_window [window_role="Preferences"] floating enable
 for_window [window_type="notification"] floating enable
+for_window [window_role="bubble"] floating enable 
+for_window [window_type="dialog"] floating enable 
+for_window [window_type="menu"] floating enable
+for_window [window_role="page-info"] floating enable
 for_window [window_role="pop-up"] floating enable
+for_window [window_role="task_dialog"] floating enable
+for_window [window_role="toolbox"] floating enable
+for_window [class=".*"] title_format "%title -- Class: %class -- Instance: %instance"
+# for_window [class=".*"] title_format "%title"
+
+for_window [window_role="webconsole"] floating enable
 for_window [class="feh" instance="feh"] floating enable
 for_window [class="mpv"] floating enable
 
@@ -225,7 +244,15 @@ for_window [class="Google-chrome" instance="crx_nckgahadagoaajjgafhacjanaoiihapd
 for_window [class="Shutter" instance="shutter"] floating enable
 for_window [class="Steam" title="Friends List"] floating enable
 for_window [class="Steam" title="Steam - News.*"] floating enable
-for_window [class="ulauncher"] floating enable
+
+# Ulauncher
+for_window [class="Ulauncher"] floating enable
+for_window [class="Ulauncher"] border none
+
+# Zoom
+for_window [class="(.*join\?action\=join.*|.*zoom.*)"] floating enable
+for_window [class="(.*join\?action\=join.*|.*zoom.*)" title="Zoom - Free Account"] floating disable
+for_window [class="(.*join\?action\=join.*|.*zoom.*)" title="Zoom Meeting"] floating disable
 
 # for_window [class="android-messages-desktop"] floating enable
 # for_window [class="android-messages-desktop"] resize set 1920 1080

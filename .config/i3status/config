@@ -37,7 +37,7 @@ memory {
 }
 
 tztime local {
-  format = "⏰ %l:%M %p     "
+  format = "⏰ %a %b %d %l:%M %p     "
 }
 
 volume master {
