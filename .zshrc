@@ -33,12 +33,15 @@ bindkey '\e[B' history-beginning-search-forward
 alias lf="fc-list : family | sort | uniq"
 # alias nvim="lvim"
 alias sz="source ~/.zshrc"
+alias avim="NVIM_APPNAME=astronvim nvim"
 
 # Aliases - edit config files
 alias addaur="$EDITOR ~/.local/src/arch-install/init.sh"
 alias i3config="$EDITOR ~/.config/i3/config"
 alias kittyconfig="$EDITOR ~/.config/kitty/kitty.conf"
 alias nvimconfig="cd ~/.config/lvim/ && $EDITOR config.lua"
+alias pbcopy='xsel --clipboard --input'
+alias pbpaste='xsel --clipboard --output'
 alias picomconfig="$EDITOR ~/.config/picom/picom.conf"
 alias tmuxconfig="$EDITOR ~/.tmux.conf.local"
 alias zshconfig="$EDITOR ~/.zshrc"
@@ -62,5 +65,4 @@ zle -N zle-keymap-select
 
 # fnm
 export PATH="/home/chuck/.local/share/fnm:$PATH"
-eval "`fnm env`"
 eval "`fnm env`"

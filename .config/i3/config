@@ -29,13 +29,20 @@ hide_edge_borders none
 # colors
 
 # class                 border  bground text    indicator child_border
-client.focused          #5c4cad #5c4cad #F8F8F2 #6272A4   #5c4cad
-client.focused_inactive #44475A #44475A #F8F8F2 #44475A   #44475A
-client.unfocused        #282A36 #282A36 #BFBFBF #282A36   #282A36
-client.urgent           #44475A #FF5555 #F8F8F2 #FF5555   #FF5555
-client.placeholder      #282A36 #282A36 #F8F8F2 #282A36   #282A36
+#client.focused          #5c4cad #5c4cad #F8F8F2 #6272A4   #5c4cad
+#client.focused_inactive #44475A #44475A #F8F8F2 #44475A   #44475A
+#client.unfocused        #282A36 #282A36 #BFBFBF #282A36   #282A36
+#client.urgent           #44475A #FF5555 #F8F8F2 #FF5555   #FF5555
+#client.placeholder      #282A36 #282A36 #F8F8F2 #282A36   #282A36
+#client.background       #F8F8F2
 
-client.background       #F8F8F2
+# class 			border 		backgr. 	text 		indicator 	child_border
+client.focused 			#4c7899 	#285577 	#ffffff 	#2e9ef4 	#285577
+client.focused_inactive 	#333333 	#5f676a 	#ffffff 	#484e50 	#5f676a
+client.unfocused 		#333333 	#222222 	#888888 	#292d2e 	#222222
+client.urgent 			#2f343a 	#900000 	#ffffff 	#900000 	#900000
+client.placeholder 		#000000 	#0c0c0c 	#ffffff 	#000000 	#0c0c0c
+client.background 		#ffffff
 
 # startup apps
 exec --no-startup-id barrier
@@ -72,7 +79,7 @@ bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
 # bindsym $mod+d exec --no-startup-id dmenu_run
-bindsym $mod+d exec --no-startup-id "dmenu_run -nf '#F8F8F2' -nb '#282A36' -sb '#6272A4' -sf '#F8F8F2' -fn 'monospace-10' -p 'dmenu%'"
+bindsym $mod+shift+d exec --no-startup-id "dmenu_run -nf '#F8F8F2' -nb '#282A36' -sb '#6272A4' -sf '#F8F8F2' -fn 'monospace-10' -p 'dmenu%'"
 
 # set movement keys
 set $left h
@@ -119,7 +126,7 @@ bindsym $mod+space focus mode_toggle
 bindsym $mod+a focus parent
 
 # focus the child container
-#bindsym $mod+d focus child
+bindsym $mod+d focus child
 
 # make the currently focused window a scratchpad
 bindsym $mod+Shift+minus move scratchpad
@@ -292,7 +299,8 @@ bindsym $mod+r mode "resize"
 bar {
   position bottom
   separator_symbol " | "
-  status_command /home/chuck/.local/bin/i3script.sh
+  #status_command /home/chuck/.local/bin/i3script.sh
+  status_command i3status
   tray_output primary
   workspace_buttons yes
 
