@@ -7,7 +7,7 @@ set $alt Mod1
 # gaps outer 4
 
 for_window [all] gaps inner all set 10
-for_window [all] padding 3px
+# for_window [all] padding 3px
 for_window [all] title_window_icon yes
 for_window [all] title_window_icon padding 5px
 
@@ -139,10 +139,7 @@ bindsym Control+Shift+space exec --no-startup-id dunstctl close-all
 bindsym Control+Shift+period exec --no-startup-id dunstctl context
 
 # open modal windows
-# bindsym $mod+F9 exec i3_scratchpad_show_or_create.sh 'google-messages' '/opt/google/chrome/google-chrome "--profile-directory=Profile 1" --app-id=hpfldicfbfomlpcikngkocigghgafkph'
-bindsym $mod+F9 exec i3_scratchpad_show_or_create.sh 'google-messages' '/opt/Android\ Messages/AndroidMessages'
-bindsym $mod+F10 exec i3_scratchpad_show_or_create.sh 'google-chat' '/opt/google-chat-linux/google-chat-linux'
-bindsym $mod+F11 exec i3_scratchpad_show_or_create.sh 'popup-terminal' 'kitty'
+bindsym $mod+F9 exec i3-scratchpad -d1200x1000 -acc -t -- kitty -d ~/Notes --detach "fzf --bind 'enter:execute(glow -p {})' --bind 'ctrl-o:execute(nvim {})'"
 
 # Ranger
 bindsym $mod+e exec kitty -e ranger

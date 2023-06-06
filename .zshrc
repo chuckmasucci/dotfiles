@@ -2,10 +2,13 @@
 export ARCHFLAGS="-arch x86_64"
 export DESKTOP_SESSION="i3"
 export EDITOR='lvim'
+export FZF_DEFAULT_COMMAND='fd --hidden --follow --exclude .git --strip-cwd-prefix'
+export FZF_DEFAULT_OPTS='--color=fg:#f8f8f2,bg:#282a36,hl:#bd93f9 --color=fg+:#f8f8f2,bg+:#44475a,hl+:#bd93f9 --color=info:#ffb86c,prompt:#50fa7b,pointer:#ff79c6 --color=marker:#ff79c6,spinner:#ffb86c,header:#6272a4'
 export LANG=en_US.UTF-8
 export MANPATH="/usr/local/man:$MANPATH"
-export TERM="kitty"
-export TERMINAL="kitty"
+export TERM="xterm-256color"
+# export TERM="kitty"
+# export TERMINAL="kitty"
 export XDG_DATA_HOME="$HOME/.local/share"
 export ZSH="$HOME/.oh-my-zsh"
 export ZSH_TMUX_CONFIG="$HOME/.tmux.conf.local"
