@@ -1,0 +1,114 @@
+return {
+  -- "nvim-tree/nvim-tree.lua",
+  -- version = "*",
+  -- lazy = false,
+  -- dependencies = {
+  --   "nvim-tree/nvim-web-devicons",
+  -- },
+  -- init = function()
+  --   local api = require("nvim-tree.api")
+  --
+  --   local function edit_or_open()
+  --     local node = api.tree.get_node_under_cursor()
+  --
+  --     if node.nodes ~= nil then
+  --       -- expand or collapse folder
+  --       api.node.open.edit()
+  --     else
+  --       -- open file
+  --       api.node.open.edit()
+  --       -- Close the tree if file was opened
+  --       api.tree.close()
+  --     end
+  --   end
+  --
+  --   -- open as vsplit on current node
+  --   local function vsplit_preview()
+  --     local node = api.tree.get_node_under_cursor()
+  --
+  --     if node.nodes ~= nil then
+  --       -- expand or collapse folder
+  --       api.node.open.edit()
+  --     else
+  --       -- open file as vsplit
+  --       api.node.open.vertical()
+  --     end
+  --
+  --     -- Finally refocus on tree if it was lost
+  --     api.tree.focus()
+  --   end
+  --
+  --   local function my_on_attach(bufnr)
+  --     local function opts(desc)
+  --       return { desc = "nvim-tree: " .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
+  --     end
+  --
+  --     -- mark operation
+  -- 	local mark_move_j = function()
+  -- 		api.marks.toggle()
+  -- 		vim.cmd("norm j")
+  -- 	end
+  -- 	local mark_move_k = function()
+  -- 		api.marks.toggle()
+  -- 		vim.cmd("norm k")
+  -- 	end
+  --
+  --     -- default mappings
+  --     api.config.mappings.default_on_attach(bufnr)
+  --
+  --     -- custom mappings
+  --     vim.keymap.set("n", "l", edit_or_open,          opts("Edit Or Open"))
+  --     vim.keymap.set("n", "L", vsplit_preview,        opts("Vsplit Preview"))
+  --     vim.keymap.set("n", "h", api.node.navigate.parent_close, opts("Close Directory"))
+  --     vim.keymap.set("n", "H", api.tree.collapse_all, opts("Collapse All"))
+  --     vim.keymap.set("n", "J", mark_move_j, opts("Toggle Bookmark Down"))
+  -- 	vim.keymap.set("n", "K", mark_move_k, opts("Toggle Bookmark Up"))
+  --   end
+  --
+  --   require("nvim-tree").setup {
+  --     actions= {
+  --       open_file = {
+  --         quit_on_open = true
+  --       }
+  --     },
+  --     diagnostics = {
+  --       enable = true,
+  --     },
+  --     on_attach = my_on_attach,
+  --     update_focused_file = {
+  --       enable = true,
+  --       update_root = false,
+  --       ignore_list = {},
+  --     },
+  --     view = {
+  --       width = {}
+  --     }
+  --   }
+  --   vim.keymap.set('n', '<leader>e', ":NvimTreeToggle<CR>", { noremap = true, silent = true })
+  --
+  --   local function find_directory_and_focus()
+  --     local actions = require("telescope.actions")
+  --     local action_state = require("telescope.actions.state")
+  --
+  --     local function open_nvim_tree(prompt_bufnr, _)
+  --       actions.select_default:replace(function()
+  --         local nvtapi = require("nvim-tree.api")
+  --
+  --         actions.close(prompt_bufnr)
+  --         local selection = action_state.get_selected_entry()
+  --         nvtapi.tree.open()
+  --         nvtapi.tree.find_file(selection.cwd .. "/" .. selection.value)
+  --       end)
+  --       return true
+  --     end
+  --
+  --     require("telescope.builtin").find_files({
+  --       find_command = { "fd", "--type", "directory", "--hidden", "--exclude", ".git/*" },
+  --       attach_mappings = open_nvim_tree,
+  --     })
+  --   end
+  --
+  --   vim.keymap.set("n", "fd", find_directory_and_focus)
+  -- end,
+}
+

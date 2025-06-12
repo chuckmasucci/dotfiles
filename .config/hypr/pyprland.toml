@@ -1,0 +1,18 @@
+[pyprland]
+plugins = [
+  "scratchpads",
+  "ags"
+]
+
+[scratchpads.term]
+animation = "fromTop"
+command = "kitty --class kitty-dropterm"
+class = "kitty-dropterm"
+size = "75% 60%"
+max_size = "1920px 100%"
+margin = 50
+pinned = true
+
+[ags]
+# command = "GTK_THEME=Chuck2:dark ags run -d ~/.local/src/ags/bar --gtk"
+# command = "ags run"

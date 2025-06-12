@@ -1,0 +1,25 @@
+configuration {
+	combi-modes: "drun,window";
+	dpi: 100;
+	drun-show-actions: true;
+	font: "mono 12";
+	modes: ["drun,window,combi"];
+	show-icons: true;
+
+  timeout {
+      action: "kb-cancel";
+      delay:  0;
+  }
+  filebrowser {
+      directories-first: true;
+      sorting-method:    "name";
+  }
+}
+
+element {
+  orientation: horizontal;
+  children: [ element-text, element-icon ];
+  spacing: 5px;
+}
+
+@theme "/home/chuck/.local/share/rofi/themes/rounded-blue-dark.rasi"

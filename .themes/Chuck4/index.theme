@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=X-GNOME-Metatheme
+Name=Chuck
+Comment=My first GTK Theme
+Encoding=UTF-8
+
+[X-GNOME-Metatheme]
+GtkTheme=Chuck
+MetacityTheme=Chuck
+IconTheme=Mint-Y
+ButtonLayout=menu:minimize,maximize,close

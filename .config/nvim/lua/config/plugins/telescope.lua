@@ -1,0 +1,77 @@
+return {
+  -- {
+  --   "nvim-telescope/telescope-fzy-native.nvim",
+  -- },
+  -- {
+  --   'nvim-telescope/telescope-fzf-native.nvim',
+  --   build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build'
+  -- },
+  -- {
+  --   'nvim-telescope/telescope.nvim',
+  --   dependencies = { 'nvim-lua/plenary.nvim' },
+  --   init = function()
+  --     local select_one_or_multi = function(prompt_bufnr)
+  --       local picker = require('telescope.actions.state').get_current_picker(prompt_bufnr)
+  --       local multi = picker:get_multi_selection()
+  --       if not vim.tbl_isempty(multi) then
+  --         require('telescope.actions').close(prompt_bufnr)
+  --         for _, j in pairs(multi) do
+  --           if j.path ~= nil then
+  --             vim.cmd(string.format("%s %s", "edit", j.path))
+  --           end
+  --         end
+  --       else
+  --         require('telescope.actions').select_default(prompt_bufnr)
+  --       end
+  --     end
+  --     require("telescope").setup({
+  --       defaults = {
+  --         mappings = {
+  --           i = {
+  --             ["<CR>"] = select_one_or_multi,
+  --           }
+  --         },
+  --         preview = true,
+  --       },
+  --       extensions = {
+  --         -- frecency = {
+  --         --   db_safe_mode = false,
+  --         -- },
+  --         fzy_native = {
+  --           override_generic_sorter = true,
+  --           override_file_sorter = true,
+  --         },
+  --         fzf = {
+  --           fuzzy = true,
+  --           override_generic_sorter = true,
+  --           override_file_sorter = true,
+  --           case_mode = "smart_case",
+  --         },
+  --       },
+  --       pickers = {
+  --         find_files = {
+  --           hidden = true,
+  --         },
+  --       },
+  --     })
+  --     require("telescope").load_extension("fzy_native")
+  --
+  --     -- Keymap
+  --     local builtin = require('telescope.builtin')
+  --     vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
+  --     vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
+  --     vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
+  --     vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
+  --     vim.keymap.set('n', '<leader>fr', "<cmd>Telescope oldfiles<cr>", {})
+  --
+  --   end
+  -- },
+  -- {
+  --   "nvim-telescope/telescope-frecency.nvim",
+  --   init = function()
+  --     require("telescope").load_extension "frecency"
+  --     vim.keymap.set('n', '<leader>fr', "<Cmd>Telescope frecency<CR>", {})
+  --   end,
+  -- }
+}
+
