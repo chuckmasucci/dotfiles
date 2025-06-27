@@ -109,6 +109,7 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+alias lvim='NVIM_APPNAME="lvim" nvim'
 
 # Env variables
 export EDITOR=nvim
